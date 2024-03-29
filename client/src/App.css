@@ -963,7 +963,7 @@ a:hover {
 }
 
 .text-light {
-  color: #d9e9e8 !important;
+  color: #fde4ce !important;
 }
 
 .text-dark {
@@ -987,9 +987,9 @@ a:hover {
   background-color: #2d3e50 !important;
 }
 
-.bg-info {
+/* .bg-info {
   background-color: #1bbc9b !important;
-}
+} */
 
 .bg-danger {
   background-color: #e64c66 !important;
