@@ -2,22 +2,26 @@
 import { gql } from '@apollo/client';
 
 // Important for useMutation: Each mutation we'd like to be able to perform gets exported out of our mutations.js utility
-export const ADD_PROFILE = gql`
-  mutation addProfile($name: String!) {
-    addProfile(name: $name) {
-      _id
-      name
-      skills
+export const CREATE_ACCOUNT = gql`
+  mutation createAccount($username: String!, $email: String!, $password: String!) {
+    createAccount(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+        email
+        password
+      }
     }
   }
 `;
 
-export const ADD_SKILL = gql`
-  mutation addSkill($profileId: ID!, $skill: String!) {
-    addSkill(profileId: $profileId, skill: $skill) {
+export const ADD_Recipe = gql`
+  mutation addRecipe($profileId: ID!, $recipe: String!) {
+    addrecipe(profileId: $profileId, recipe: $recipe) {
       _id
-      name
-      skills
+      username
+      recipe
     }
   }
 `;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
-// import Auth from '../utils/auth';
+import AuthService from '../utils/auth';
 import { LOGIN_USER } from '../utils/mutations';
 import loginPicture from '../assets/Pictures/login-picture.png';
 
@@ -27,8 +27,7 @@ const LoginForm = () => {
           variables: { ...userFormData },
         });
 
-        // Uncomment and use once Auth.login is defined
-        // Auth.login(data.login.token);
+        AuthService.login(data.login.token);
         setUserFormData({ email: '', password: '' });
         setShowAlert(false);
       } catch (err) {
