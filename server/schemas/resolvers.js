@@ -1,4 +1,5 @@
 const { Profile } = require('../models');
+const bcrypt = require('bcrypt');
 
 const resolvers = {
   // Important for useQuery: The resolver matches the typeDefs entry point and informs the request of the relevant data
@@ -16,14 +17,20 @@ const resolvers = {
   },
   // Important for useMutation: The resolver matches the typeDefs entry point and informs the request of the relevant data
   Mutation: {
-    addProfile: async (parent, { name }) => {
-      return Profile.create({ name });
+
+    createAccount: async (parent, { username, email, password }) => {
+      // Hash the password before saving to the database
+      const hashedPassword = await bcrypt.hash(password, 10);
+      
+      // Assuming your Profile model has fields for username, email, and password
+      return Profile.create({ username, email, password: hashedPassword });
     },
-    addSkill: async (parent, { profileId, skill }) => {
+    
+    addRecipe: async (parent, { profileId, recipe }) => {
       return Profile.findOneAndUpdate(
         { _id: profileId },
         {
-          $addToSet: { skills: skill },
+          $addToSet: { recipes: recipe},
         },
         {
           new: true,
@@ -31,13 +38,13 @@ const resolvers = {
         }
       );
     },
-    removeProfile: async (parent, { profileId }) => {
+    removeAccount: async (parent, { profileId }) => {
       return Profile.findOneAndDelete({ _id: profileId });
     },
-    removeSkill: async (parent, { profileId, skill }) => {
+    removeRecipe: async (parent, { profileId, recipe }) => {
       return Profile.findOneAndUpdate(
         { _id: profileId },
-        { $pull: { skills: skill } },
+        { $pull: { recipes: recipe } },
         { new: true }
       );
     },

@@ -13,16 +13,19 @@ const client = new ApolloClient({
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const location = useLocation(); // Get the current location
+  
+  // Determine if we're on a page that shouldn't show the header or footer
+  const hideHeaderAndFooter = location.pathname === '/' || location.pathname === '/signup';
 
   return (
     <ApolloProvider client={client}>
       <div className="flex-column justify-flex-start min-100-vh">
         {/* Conditionally render Header and Footer based on the current path */}
-        {location.pathname !== '/login' && <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+        {!hideHeaderAndFooter && <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
         <div className="container">
           <Outlet />
         </div>
-        {location.pathname !== '/login' && <Footer />}
+        {!hideHeaderAndFooter && <Footer />}
       </div>
     </ApolloProvider>
   );
