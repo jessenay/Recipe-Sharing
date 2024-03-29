@@ -1,24 +1,31 @@
-.login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+body {
+  background-color: #2f2f2f;
+}
+
+
+.login-text {
+  text-align: center;
+  position: relative;
+  left: 20px;
 }
 
 .login-page {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  background-color: #ff670e;
+  align-items: center;
+  background-color: #aad15f;
   height: 800px;
   border-radius: 20px;
+  position: relative;
+  top: 40px;
 }
 
 .login-form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-self: center;
-  margin: auto;
+  margin-bottom: 20px;
 }
 
 .right-section {
@@ -26,40 +33,77 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  
+  margin-right: 20px;
 }
 
 .login-picture {
   max-width: 100%;
   height: auto;
   justify-content: center;
+  height: 500px;
+  width: 800px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-form, .right-section, .login-picture, .top-section, .logo-section {
+    max-width: 100%; /* Take full available width */
+  }
+
+  .login-text, .login-form h2, .signup-section {
+    position: static; /* Reset positioning adjustments */
+    margin: 0 auto; /* Center align */
+  }
+
+  .login-picture {
+    max-height: 300px; /* Limit picture size on small devices */
+  }
 }
 
 .logo-section {
   display: flex;
   align-items: center;
-  background-color: #d22701;
+  background-color: #ff670e;
   height: 200px;
   width: 800px;
   font-size: 100px;
   justify-content: center;
   border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  color: white;
 }
 
 .top-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-  background-color: #aad15f;
-  height: 600px;
+  height: 500px;
   width: 800px;
   border-top-right-radius: 20px;
-
 }
 
-.website-logo {
-  margin-right: 10px; /* Adjust based on your preference */
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  left: 30px;
+}
+
+.signup-section {
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  left: 30px;
+}
+
+.signup-section a {
+  color: #007bff; /* Bootstrap primary blue, adjust as per your theme */
+  text-decoration: none; /* Optional */
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
