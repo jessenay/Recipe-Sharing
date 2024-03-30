@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import AuthService from '../utils/auth';
@@ -31,7 +31,10 @@ const CreateAccountForm = () => {
         }
 
         if (form.checkValidity() === false) {
+            event.preventDefault();
             event.stopPropagation();
+            setShowAlert(true);
+            return;
         } else {
             try {
                 const { data } = await createAccount({

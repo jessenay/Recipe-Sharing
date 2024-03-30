@@ -9,8 +9,6 @@ export const CREATE_ACCOUNT = gql`
       user {
         _id
         username
-        email
-        password
       }
     }
   }
