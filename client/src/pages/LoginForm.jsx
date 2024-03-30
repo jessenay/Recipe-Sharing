@@ -30,6 +30,9 @@ const LoginForm = () => {
         AuthService.login(data.login.token);
         setUserFormData({ email: '', password: '' });
         setShowAlert(false);
+
+        // Redirect to the home page after successful login
+        window.location.href = '/home'; // Update the URL programmatically
       } catch (err) {
         console.error(err);
         setShowAlert(true);
@@ -87,7 +90,7 @@ const LoginForm = () => {
       </div>
       <div className="right-section">
         <div className='top-section'>
-      <img src={loginPicture} alt="Descriptive Alt Text" className="login-picture" />
+          <img src={loginPicture} alt="Descriptive Alt Text" className="login-picture" />
         </div>
         <div className="logo-section">
           <span>FeastFolio</span>
