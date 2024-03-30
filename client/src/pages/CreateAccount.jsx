@@ -71,7 +71,6 @@ const CreateAccountForm = () => {
             value={userFormData.username}
             required
         />
-        <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className='mb-3'>
@@ -85,7 +84,6 @@ const CreateAccountForm = () => {
             required
             pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" // HTML5 pattern for basic email validation
         />
-        <Form.Control.Feedback type='invalid'>Please enter a valid email address.</Form.Control.Feedback>
     </Form.Group>
 
     <Form.Group className='mb-3'>
@@ -98,7 +96,6 @@ const CreateAccountForm = () => {
             value={userFormData.password}
             required
         />
-        <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
     </Form.Group>
 
     <Button disabled={!(userFormData.username && userFormData.email && userFormData.password)} type='submit' variant='success'>
