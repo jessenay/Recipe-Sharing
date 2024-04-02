@@ -91,7 +91,7 @@ const LoginForm = () => {
           <img src={loginPicture} alt="Descriptive Alt Text" className="login-picture" />
         </div>
         <div className="logo-section">
-          <span>FeastFolio</span>
+          <span>Feastbook</span>
         </div>
       </div>
     </div>
