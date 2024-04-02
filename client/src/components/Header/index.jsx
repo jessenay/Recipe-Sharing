@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Auth from "../../utils/auth";
 
 const Header = () => {
     const logout = (event) => {
@@ -34,7 +35,7 @@ const Header = () => {
             </h1>
           </Link>
         ) : (
-          <Link className="text-light p-2" to="/home">
+          <Link className="text-light p-2" to="/">
             <h1 className="m-0" style={{ fontSize: "22px" }}>
               Login
             </h1>
