@@ -1,8 +1,8 @@
+import { jwtDecode } from 'jwt-decode';
 class AuthService {
     async decodeToken(token) {
       if (!token) return null;
-      const { default: decode } = await import('jwt-decode');
-      return decode(token);
+      return jwtDecode(token);
     }
   
     async getProfile() {
