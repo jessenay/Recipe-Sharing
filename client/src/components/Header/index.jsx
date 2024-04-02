@@ -19,7 +19,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             Recipe Sharing
           </h1>
         </Link>
-        <Link className="text-light p-2" to="/">
+        <Link className="text-light p-2" to="/home">
           <h1
             className="m-0"
             style={{
