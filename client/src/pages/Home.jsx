@@ -21,9 +21,7 @@ const Home = () => {
             boxShadow: "inset 0 0 0 2000px rgba(0, 0, 0, 0.6)",
           }}
         >
-          <div
-            className="mask"
-          >
+          <div className="mask">
             <div className="d-flex justify-content-center align-items-center h-100">
               <div className="text-white">
                 <h1
@@ -34,7 +32,9 @@ const Home = () => {
                     lineHeight: "62px",
                   }}
                 >
-                  Welcome to Our Recipe Community!
+                  Welcome to
+                  <br />
+                  Our Recipe Community!
                 </h1>
                 <p
                   style={{
@@ -50,7 +50,14 @@ const Home = () => {
                 <button
                   className="btn"
                   onClick={handleAddRecipeClick}
-                  style={{ margin: "20px auto", display: "block" }}
+                  style={{
+                    fontSize: "22px",
+                    fontFamily: "Poppins",
+                    fontWeight: 500,
+                    textTransform: "uppercase",
+                    margin: "20px auto",
+                    display: "block",
+                  }}
                 >
                   Add Recipe
                 </button>
