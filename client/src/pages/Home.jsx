@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
   const navigate = useNavigate();
   const handleAddRecipeClick = () => {
-    navigate('./add-recipe');
+    navigate('/add-recipe');
   };
 
   return (
