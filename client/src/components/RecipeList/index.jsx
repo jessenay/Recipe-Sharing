@@ -25,6 +25,8 @@
 
 // export default RecipeList;
 
+import RecipeItem from "..//RecipeItem";
+
 const recipes = [
   {
     id: 1,
