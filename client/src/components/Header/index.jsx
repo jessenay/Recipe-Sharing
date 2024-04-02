@@ -28,21 +28,13 @@ const Header = () => {
           </h1>
         </Link>
         {Auth.loggedIn() ? (
-          <Link
-            className="text-light p-2"
-            to="/"
-            onClick={logout}
-          >
+          <Link className="text-light p-2" to="/" onClick={logout}>
             <h1 className="m-0" style={{ fontSize: "22px" }}>
               Logout
             </h1>
           </Link>
         ) : (
-          <Link
-            className="text-light p-2"
-            to="/"
-            onClick={() => setLoggedIn(!loggedIn)}
-          >
+          <Link className="text-light p-2" to="/home">
             <h1 className="m-0" style={{ fontSize: "22px" }}>
               Login
             </h1>
