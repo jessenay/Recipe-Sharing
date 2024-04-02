@@ -10,34 +10,55 @@ const Home = () => {
 
   return (
     <main>
-      <section style={{ padding: "20px", textAlign: "center" }}>
-        <h1
+      <section>
+        <div
+          className="p-5 text-center bg-image"
           style={{
-            fontSize: "42px",
-            fontFamily: "Playfair Display",
-            fontWeight: 400,
+            backgroundImage:
+              "url('https://expertphotography.b-cdn.net/wp-content/uploads/2019/01/food-photography-blogs-pumpkin-soup_bealubas.jpg')",
+            height: 400,
+            backgroundPosition: "center",
+            boxShadow: "inset 0 0 0 2000px rgba(0, 0, 0, 0.6)",
           }}
         >
-          Welcome to Our Recipe Community!
-        </h1>
-        <p
-          style={{
-            fontSize: "16px",
-            fontFamily: "Poppins",
-            fontWeight: 600,
-            textTransform: "uppercase",
-          }}
-        >
-          Discover, share, and create the best recipes from around the world.
-        </p>
+          <div
+            className="mask"
+          >
+            <div className="d-flex justify-content-center align-items-center h-100">
+              <div className="text-white">
+                <h1
+                  style={{
+                    fontSize: "62px",
+                    fontFamily: "Playfair Display",
+                    fontWeight: 400,
+                    lineHeight: "62px",
+                  }}
+                >
+                  Welcome to Our Recipe Community!
+                </h1>
+                <p
+                  style={{
+                    fontSize: "18px",
+                    fontFamily: "Poppins",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Discover, share, and create the best recipes from around the
+                  world.
+                </p>
+                <button
+                  className="btn"
+                  onClick={handleAddRecipeClick}
+                  style={{ margin: "20px auto", display: "block" }}
+                >
+                  Add Recipe
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-
-      <button
-        onClick={handleAddRecipeClick}
-        style={{ margin: "20px auto", display: "block" }}
-      >
-        Add Recipe
-      </button>
       <RecipeList />
     </main>
   );
