@@ -5,7 +5,7 @@ import RecipeList from "../components/RecipeList";
 const Home = () => {
   const navigate = useNavigate();
   const handleAddRecipeClick = () => {
-    navigate("./add-recipe");
+    navigate('/add-recipe');
   };
 
   return (
