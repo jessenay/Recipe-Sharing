@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './RecipeCards.css';
+import './RecipeCard.css';
 
 //Displays Recipe card
 const RecipeCard = ({ recipe }) => {
@@ -140,7 +140,7 @@ const App = () => {
     const [recipes, setRecipe] = useState([]);
 
     const handleAddRecipe = (newRecipe) => {
-        setRecipe([... recipes, newRecipe])
+        setRecipe([...recipes, newRecipe])
     };
 
     return (

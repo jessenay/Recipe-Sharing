@@ -3,12 +3,20 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
+  const handleAddRecipeClick = () => {
+    navigate('./add-recipe');
+  };
+
   return (
     <main>
       <section style={{ padding: '20px', textAlign: 'center' }}>
         <h1>Welcome to Our Recipe Community!</h1>
         <p>Discover, share, and create the best recipes from around the world.</p>
       </section>
+
+      <button onClick={handleAddRecipeClick} style={{ margin: '20px auto', display: 'block' }}>
+        Add Recipe
+      </button>
 
       <section style={{ padding: '20px' }}>
         <h2>Featured Recipes</h2>
