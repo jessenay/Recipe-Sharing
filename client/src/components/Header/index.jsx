@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 
-const Header = ({ loggedIn, setLoggedIn }) => {
+const Header = () => {
+    const logout = (event) => {
+      event.preventDefault();
+      Auth.logout();
+    };
+
   return (
     <header
       className="bg-info mb-4 py-3 display-flex align-center"
@@ -22,11 +27,11 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             Profile
           </h1>
         </Link>
-        {loggedIn ? (
+        {Auth.loggedIn() ? (
           <Link
             className="text-light p-2"
             to="/"
-            onClick={() => setLoggedIn(!loggedIn)}
+            onClick={logout}
           >
             <h1 className="m-0" style={{ fontSize: "22px" }}>
               Logout
