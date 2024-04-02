@@ -20,12 +20,6 @@ const Home = () => {
           <div>A featured recipe</div>
         </div>
       </section>
-
-      <section style={{ padding: '20px', textAlign: 'center' }}>
-        <h2>Join Our Community</h2>
-        <p>Create an account to share your own recipes and save your favorites!</p>
-        <button onClick={() => navigate('/login')}>Sign Up Now</button>
-      </section>
     </main>
   );
 };
