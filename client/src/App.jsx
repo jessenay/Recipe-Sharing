@@ -1,9 +1,10 @@
 import './App.css';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Outlet, useLocation } from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AuthService from './utils/auth';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -16,6 +17,11 @@ function App() {
   
   // Determine if we're on a page that shouldn't show the header or footer
   const hideHeaderAndFooter = location.pathname === '/' || location.pathname === '/signup';
+
+  useEffect(() => {
+    const checkLoggedIn = AuthService.loggedIn();
+    setLoggedIn(checkLoggedIn);
+  }, [location]);
 
   return (
     <ApolloProvider client={client}>

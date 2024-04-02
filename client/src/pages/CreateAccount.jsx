@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import AuthService from '../utils/auth';
 import { CREATE_ACCOUNT } from '../utils/mutations';
 import loginPicture from '../assets/Pictures/login-picture.png';
+import { useNavigate } from 'react-router-dom'; // useNavigate for redirection
 
 const CreateAccountForm = () => {
     const [userFormData, setUserFormData] = useState({
@@ -13,7 +14,9 @@ const CreateAccountForm = () => {
     });
     const [validated, setValidated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false); // For success message display
     const [createAccount] = useMutation(CREATE_ACCOUNT);
+    const navigate = useNavigate(); // Initialize navigate
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -23,31 +26,25 @@ const CreateAccountForm = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         const form = event.currentTarget;
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(userFormData.email)) {
-            setShowAlert(true);
-            return;
-        }
-
+    
         if (form.checkValidity() === false) {
-            event.preventDefault();
             event.stopPropagation();
-            setShowAlert(true);
-            return;
         } else {
             try {
                 const { data } = await createAccount({
                     variables: { ...userFormData },
                 });
-
-                AuthService.login(data.createAccount.token);
+                AuthService.login(data.createAccount.token); // Save the token.
+                setShowSuccessMessage(true); // Display success message.
+                setTimeout(() => {
+                    navigate('/home'); // Redirect after 3 seconds.
+                }, 3000);
             } catch (err) {
                 console.error(err);
                 setShowAlert(true);
             }
         }
-
+    
         setValidated(true);
     };
 
@@ -56,52 +53,56 @@ const CreateAccountForm = () => {
             <div className="login-form">
                 <h2>Create Account</h2>
                 <Form noValidate validated={validated} onSubmit={handleFormSubmit} className='login-text'>
-    {showAlert && (
-        <Alert dismissible onClose={() => setShowAlert(false)} variant='danger'>
-            There was a problem with creating your account.
-        </Alert>
-    )}
-    <Form.Group className='mb-3'>
-        <Form.Label htmlFor='username'>Username</Form.Label>
-        <Form.Control
-            type='text'
-            placeholder='Your username'
-            name='username'
-            onChange={handleInputChange}
-            value={userFormData.username}
-            required
-        />
-    </Form.Group>
+                    {showAlert && (
+                        <Alert dismissible onClose={() => setShowAlert(false)} variant='danger'>
+                            There was a problem with creating your account.
+                        </Alert>
+                    )}
+                    {showSuccessMessage && (
+                        <Alert variant='success'>
+                            Account created successfully! Redirecting...
+                        </Alert>
+                    )}
+                    <Form.Group className='mb-3'>
+                        <Form.Label htmlFor='username'>Username</Form.Label>
+                        <Form.Control
+                            type='text'
+                            placeholder='Your username'
+                            name='username'
+                            onChange={handleInputChange}
+                            value={userFormData.username}
+                            required
+                        />
+                    </Form.Group>
 
-    <Form.Group className='mb-3'>
-        <Form.Label htmlFor='email'>Email</Form.Label>
-        <Form.Control
-            type='email'
-            placeholder='Your email'
-            name='email'
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" // HTML5 pattern for basic email validation
-        />
-    </Form.Group>
+                    <Form.Group className='mb-3'>
+                        <Form.Label htmlFor='email'>Email</Form.Label>
+                        <Form.Control
+                            type='email'
+                            placeholder='Your email'
+                            name='email'
+                            onChange={handleInputChange}
+                            value={userFormData.email}
+                            required
+                        />
+                    </Form.Group>
 
-    <Form.Group className='mb-3'>
-        <Form.Label htmlFor='password'>Password</Form.Label>
-        <Form.Control
-            type='password'
-            placeholder='Your password'
-            name='password'
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-        />
-    </Form.Group>
+                    <Form.Group className='mb-3'>
+                        <Form.Label htmlFor='password'>Password</Form.Label>
+                        <Form.Control
+                            type='password'
+                            placeholder='Your password'
+                            name='password'
+                            onChange={handleInputChange}
+                            value={userFormData.password}
+                            required
+                        />
+                    </Form.Group>
 
-    <Button disabled={!(userFormData.username && userFormData.email && userFormData.password)} type='submit' variant='success'>
-        Create Account
-    </Button>
-</Form>
+                    <Button disabled={!(userFormData.username && userFormData.email && userFormData.password)} type='submit' variant='success'>
+                        Create Account
+                    </Button>
+                </Form>
                 <div className="signup-section">
                     <p>Already have an account? <a href="/">Log in</a></p>
                 </div>
