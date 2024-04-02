@@ -14,7 +14,15 @@ const Footer = () => {
             &larr; Go Back
           </button>
         )}
-        <h4 className="text-light">
+        <h4
+          className="text-light"
+          style={{
+            fontSize: "20px",
+            fontFamily: "Poppins",
+            fontWeight: 600,
+            textTransform: "uppercase",
+          }}
+        >
           &copy; {new Date().getFullYear()} - Recipe Sharing
         </h4>
       </div>
