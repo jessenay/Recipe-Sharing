@@ -31,36 +31,42 @@ const recipes = [
   {
     id: 1,
     title: "Fists of Forecast",
+    category: "Entry",
     instruction:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius blandit nisl, hendrerit volutpat erat. Morbi sodales magna enim, in ornare mi vulputate vel. Proin dapibus tincidunt commodo. Sed pellentesque dictum lacinia. Ut a sapien semper, posuere augue nec, rhoncus magna. Sed cursus eu justo id venenatis.",
   },
   {
     id: 2,
     title: "The Green Hill",
+    category: "Entry",
     instruction:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius blandit nisl, hendrerit volutpat erat. Morbi sodales magna enim, in ornare mi vulputate vel. Proin dapibus tincidunt commodo. Sed pellentesque dictum lacinia. Ut a sapien semper, posuere augue nec, rhoncus magna. Sed cursus eu justo id venenatis.",
   },
   {
     id: 3,
     title: "Code Quiz",
+    category: "Entry",
     instruction:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius blandit nisl, hendrerit volutpat erat. Morbi sodales magna enim, in ornare mi vulputate vel. Proin dapibus tincidunt commodo. Sed pellentesque dictum lacinia. Ut a sapien semper, posuere augue nec, rhoncus magna. Sed cursus eu justo id venenatis.",
   },
   {
     id: 4,
     title: "Work Day Scheduler",
+    category: "Entry",
     instruction:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius blandit nisl, hendrerit volutpat erat. Morbi sodales magna enim, in ornare mi vulputate vel. Proin dapibus tincidunt commodo. Sed pellentesque dictum lacinia. Ut a sapien semper, posuere augue nec, rhoncus magna. Sed cursus eu justo id venenatis.",
   },
   {
     id: 5,
     title: "Password Generator",
+    category: "Entry",
     instruction:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius blandit nisl, hendrerit volutpat erat. Morbi sodales magna enim, in ornare mi vulputate vel. Proin dapibus tincidunt commodo. Sed pellentesque dictum lacinia. Ut a sapien semper, posuere augue nec, rhoncus magna. Sed cursus eu justo id venenatis.",
   },
   {
     id: 6,
     title: "Weather Dashboard",
+    category: "Entry",
     instruction:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin varius blandit nisl, hendrerit volutpat erat. Morbi sodales magna enim, in ornare mi vulputate vel. Proin dapibus tincidunt commodo. Sed pellentesque dictum lacinia. Ut a sapien semper, posuere augue nec, rhoncus magna. Sed cursus eu justo id venenatis.",
   },
@@ -73,7 +79,8 @@ export default function RecipeList() {
         <RecipeItem
           key={recipe.id}
           title={recipe.title}
-          description={recipe.instruction}
+          instruction={recipe.instruction}
+          category={recipe.category}
         />
       ))}
     </div>
