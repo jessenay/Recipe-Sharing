@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 // Important for useQuery: We import the useQuery hook from @apollo/client
 import { useQuery } from '@apollo/client';
 
-import SkillsList from '../components/SkillsList';
+import SkillsList from '../components/RecipeList';
 import SkillForm from '../components/SkillForm';
 
 // Important for useQuery: We import the specific query we'd like to perform from our queries.js utility
