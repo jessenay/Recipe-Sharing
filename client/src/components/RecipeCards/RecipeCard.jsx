@@ -91,15 +91,15 @@ const RecipeForm = ({ onAddRecipe }) => {
 
     return (
         <form onSubmit={submit}>
-            <label>Title:</label>
+            <label className='label'>Title:</label>
             <input type="text" name="title" value={recipe.title} onChange={handleChange} require />
-            <label>Image URL:</label>
+            <label className="label">Image URL:</label>
             <input type="text" name="image" value={recipe.image} onChange={handleChange} require />
-            <label>Prep Time:</label>
+            <label className="label">Prep Time:</label>
             <input type="text" name="prep time" value={recipe.prepTime} onChange={handleChange} require />
-            <label>Cook Time:</label>
+            <label className="label">Cook Time:</label>
             <input type="text" name="cook time" value={recipe.cookTime} onChange={handleChange} require />
-            <label>Ingredients:</label>
+            <label className="label">Ingredients:</label>
             {recipe.ingredients.map((ingredient, index) => (
                 <input
                     key={index}
@@ -110,7 +110,7 @@ const RecipeForm = ({ onAddRecipe }) => {
                 />
             ))}
             <button type="button" onClick={handleAddIngredient}>Add Ingredient</button>
-            <label>Instructions:</label>
+            <label className="label">Instructions:</label>
             {recipe.instructions.map((instruction, index) => (
                 <textarea
                     key={index}

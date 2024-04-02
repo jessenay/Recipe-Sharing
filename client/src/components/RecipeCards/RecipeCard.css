@@ -4,3 +4,13 @@
     min-height: 100vh; 
     background-image: linear-gradient(15deg, rgb(57, 56, 56) 0%, #fde4c3 100%); 
    } 
+
+.label{
+    text-align: center;
+    align-items: center;
+    color:black;
+    display: flex;
+    padding: 8px;
+    font-size: 30px;
+    
+}
