@@ -7,7 +7,7 @@ export default function RecipeItem(props) {
             fontSize: "20px",
             fontFamily: "Poppins",
             fontWeight: 600,
-            textTransform:'uppercase',
+            textTransform: "uppercase",
           }}
         >
           {props.category}
@@ -23,10 +23,27 @@ export default function RecipeItem(props) {
         >
           {props.title}
         </h5>
-        <p className="card-text">{props.instruction}</p>
-        <a href="#" className="card-link">
+        <p
+          style={{
+            fontSize: "18px",
+            fontFamily: "Roboto",
+            fontWeight: 400,
+          }}
+          className="card-text"
+        >
+          {props.instruction}
+        </p>
+        <button
+          style={{
+            fontSize: "16px",
+            fontFamily: "Poppins",
+            fontWeight: 500,
+          }}
+          href="#"
+          className="btn"
+        >
           View Recipe
-        </a>
+        </button>
       </div>
     </div>
   );
