@@ -5,18 +5,18 @@ import './RecipeCard.css';
 const RecipeCard = ({ recipe }) => {
     return (
         <div className="recipe-card">
-            <h2>{recipe.title}</h2>
-            <img src={recipe.image} alt {...recipe.title} />
-            <p>Prep Time: {recipe.prepTime}</p>
-            <p>Cook Time: {recipe.cookTime}</p>
-            <h3>Ingredients</h3>
-            <ul>
+            <h2 className="word">{recipe.title}</h2>
+            <img src={recipe.image} alt={recipe.title} />
+            <p className="time">Prep Time: {recipe.prepTime}</p>
+            <p className="time">Cook Time: {recipe.cookTime}</p>
+            <h3 className="word">Ingredients</h3>
+            <ul className="list">
                 {recipe.ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
                 ))}
             </ul>
-            <h3>Instructions</h3>
-            <ul>
+            <h3 className="word">Instructions</h3>
+            <ul className="list">
                 {recipe.instructions.map((instruction, index) => (
                     <li key={index}>{instruction}</li>
                 ))}
@@ -44,6 +44,7 @@ const RecipeForm = ({ onAddRecipe }) => {
         }))
     };
 
+
     const handleAddIngredient = () => {
         setRecipe((prevRecipe) => ({
             ...prevRecipe,
@@ -52,7 +53,7 @@ const RecipeForm = ({ onAddRecipe }) => {
     };
 
     const handleIngredientChange = (index, value) => {
-        const newIngredients = [...recipe.newIngredients];
+        const newIngredients = [...recipe.ingredients];
         newIngredients[index] = value;
         setRecipe((prevRecipe) => ({
             ...prevRecipe,
@@ -90,16 +91,16 @@ const RecipeForm = ({ onAddRecipe }) => {
     };
 
     return (
-        <form onSubmit={submit}>
-            <label className='label'>Title:</label>
+        <form className="form" onSubmit={submit}>
+            <label className='label'>TITLE:</label>
             <input type="text" name="title" value={recipe.title} onChange={handleChange} require />
-            <label className="label">Image URL:</label>
+            <label className="label">IMAGE URL:</label>
             <input type="text" name="image" value={recipe.image} onChange={handleChange} require />
-            <label className="label">Prep Time:</label>
-            <input type="text" name="prep time" value={recipe.prepTime} onChange={handleChange} require />
-            <label className="label">Cook Time:</label>
-            <input type="text" name="cook time" value={recipe.cookTime} onChange={handleChange} require />
-            <label className="label">Ingredients:</label>
+            <label className="label">PREP TIME:</label>
+            <input type="text" name="prepTime" value={recipe.prepTime} onChange={handleChange} require />
+            <label className="label">COOK TIME:</label>
+            <input type="text" name="cookTime" value={recipe.cookTime} onChange={handleChange} require />
+            <label className="label">INGREDIENTS:</label>
             {recipe.ingredients.map((ingredient, index) => (
                 <input
                     key={index}
@@ -109,8 +110,8 @@ const RecipeForm = ({ onAddRecipe }) => {
                     required
                 />
             ))}
-            <button type="button" onClick={handleAddIngredient}>Add Ingredient</button>
-            <label className="label">Instructions:</label>
+            <button className="button" type="button" onClick={handleAddIngredient}>Add Ingredient</button>
+            <label className="label">INSTRUCTIONS:</label>
             {recipe.instructions.map((instruction, index) => (
                 <textarea
                     key={index}
@@ -119,8 +120,8 @@ const RecipeForm = ({ onAddRecipe }) => {
                     required
                 />
             ))}
-            <button type="button" onClick={handleAddInstruction}>Add Instruction</button>
-            <button type="submit">Add Recipe</button>
+            <button className="button" type="button " onClick={handleAddInstruction}>Add Instruction</button>
+            <button className="button" type="submit">Add Recipe</button>
         </form>
     );
 };
@@ -130,7 +131,7 @@ const RecipeCards = ({ recipes }) => {
     return (
         <div className="recipe-cards">
             {recipes.map((recipe, index) => (
-                <RecipeCards key={index} recipe={recipe} />
+                <RecipeCard key={index} recipe={recipe} />
             ))}
         </div>
     );
@@ -153,4 +154,3 @@ const App = () => {
 };
 
 export default App;
-

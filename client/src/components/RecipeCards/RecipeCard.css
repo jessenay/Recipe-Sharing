@@ -1,9 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap'); 
 
-.Index{
-    min-height: 100vh; 
-    background-image: linear-gradient(15deg, rgb(57, 56, 56) 0%, #fde4c3 100%); 
-   } 
 
 .label{
     text-align: center;
@@ -11,6 +6,31 @@
     color:black;
     display: flex;
     padding: 8px;
-    font-size: 30px;
-    
+    font-size: 25px;
+    font-family: "Poppins";
+    font-weight: 600;
+    text-decoration:underline;
+    padding-top: 25px;
+    padding-bottom: 10px;
 }
+
+.recipe-card{
+    text-align: center;
+    align-items: center;
+}
+
+.word{
+    text-align: center;
+    align-items: center;
+}
+
+.time{
+    text-align: center;
+    align-items: center;
+}
+
+.list{
+    text-align: center;
+    align-items: center;
+}
+

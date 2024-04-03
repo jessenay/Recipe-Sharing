@@ -7,7 +7,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
       style={{ backgroundColor: "#aad15f" }}
     >
       <div className="container flex-row">
-        <Link className="text-light mr-auto p-2" to="/">
+        <Link className="text-light mr-auto p-2" to="/home">
           <h1
             className="m-0"
             style={{
@@ -17,7 +17,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
               color: "#06052e",
             }}
           >
-            Recipe Sharing
+            Feastbook
           </h1>
         </Link>
         <Link className="text-light p-2" to="/home">

@@ -51,7 +51,7 @@ const CreateAccountForm = () => {
     return (
         <div className="login-page">
             <div className="login-form">
-                <h2>Create Account</h2>
+                <h2 className='login-heading'>Create Account</h2>
                 <Form noValidate validated={validated} onSubmit={handleFormSubmit} className='login-text'>
                     {showAlert && (
                         <Alert dismissible onClose={() => setShowAlert(false)} variant='danger'>
@@ -65,7 +65,7 @@ const CreateAccountForm = () => {
                     )}
                     <Form.Group className='mb-3'>
                         <Form.Label htmlFor='username'>Username</Form.Label>
-                        <Form.Control
+                        <Form.Control className='form-input login-form-input'
                             type='text'
                             placeholder='Your username'
                             name='username'
@@ -77,7 +77,7 @@ const CreateAccountForm = () => {
 
                     <Form.Group className='mb-3'>
                         <Form.Label htmlFor='email'>Email</Form.Label>
-                        <Form.Control
+                        <Form.Control className='form-input login-form-input'
                             type='email'
                             placeholder='Your email'
                             name='email'
@@ -89,7 +89,7 @@ const CreateAccountForm = () => {
 
                     <Form.Group className='mb-3'>
                         <Form.Label htmlFor='password'>Password</Form.Label>
-                        <Form.Control
+                        <Form.Control className='form-input login-form-input'
                             type='password'
                             placeholder='Your password'
                             name='password'
@@ -112,7 +112,7 @@ const CreateAccountForm = () => {
                     <img src={loginPicture} alt="Login Illustration" className="login-picture" />
                 </div>
                 <div className="logo-section">
-                    <span>FeastFolio</span>
+                    <span>Feastbook</span>
                 </div>
             </div>
         </div>
