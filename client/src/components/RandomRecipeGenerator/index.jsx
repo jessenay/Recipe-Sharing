@@ -1,4 +1,7 @@
-export default function RandomRecipe() {
+import { Link } from "react-router-dom";
+import API from ".../utils/API";
+
+export default function RandomRecipeGenerator() {
   return (
     <div className="card pt-4">
       <div className="card-body">
@@ -34,20 +37,26 @@ export default function RandomRecipe() {
         >
           blablabla
         </p>
-        <button
-          style={{
-            fontSize: "22px",
-            fontFamily: "Poppins",
-            fontWeight: 500,
-            textTransform: "uppercase",
-            margin: "20px auto",
-            display: "block",
-          }}
-          href="#"
-          className="btn"
+        <Link
+          className="text-light p-2"
+          to="/"
+          onClick={() => setLoggedIn(!loggedIn)}
         >
-          Generate a Recipe
-        </button>
+          <button
+            style={{
+              fontSize: "22px",
+              fontFamily: "Poppins",
+              fontWeight: 500,
+              textTransform: "uppercase",
+              margin: "20px auto",
+              display: "block",
+            }}
+            href="#"
+            className="btn"
+          >
+            Generate a Recipe
+          </button>
+        </Link>
       </div>
     </div>
   );
