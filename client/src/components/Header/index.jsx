@@ -17,7 +17,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             Home
           </h1>
         </Link>
-        <Link className="text-light p-2" to="/profile/:profileId">
+        <Link className="text-light p-2" to="/profile">
           <h1 className="m-0" style={{ fontSize: "22px" }}>
             Profile
           </h1>

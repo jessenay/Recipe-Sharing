@@ -2,9 +2,6 @@ import { useParams } from 'react-router-dom';
 // Important for useQuery: We import the useQuery hook from @apollo/client
 import { useQuery } from '@apollo/client';
 
-import SkillsList from '../components/SkillsList';
-import SkillForm from '../components/SkillForm';
-
 // Important for useQuery: We import the specific query we'd like to perform from our queries.js utility
 import { QUERY_SINGLE_PROFILE } from '../utils/queries';
 
@@ -29,17 +26,35 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div>
-      <h2 className="card-header">
-        {profile.name}'s friends have endorsed these skills...
-      </h2>
-
-      {profile.skills?.length > 0 && <SkillsList skills={profile.skills} />}
-
-      <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <SkillForm profileId={profile._id} />
-      </div>
-    </div>
+    <div className="container">
+    {profile && (
+      <>
+        <div className="profile-header">
+          <img src={profile.profilePic} alt="Profile Picture" />
+          <h1>{profile.name}</h1>
+          <p>{profile.profession}</p>
+        </div>
+        <div className="profile-details">
+          <h2>About Me</h2>
+          <p>{profile.about}</p>
+        </div>
+        <div className="profile-skills">
+          <h2>Skills</h2>
+          <ul>
+            {profile.skills.map((skill, index) => (
+              <li key={index}>{skill}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="profile-contact">
+          <h2>Contact</h2>
+          <p>Email: {profile.email}</p>
+          <p>Phone: {profile.phone}</p>
+        </div>
+      </>
+    )}
+    {!profile && <div>No profile data found.</div>}
+  </div>
   );
 };
 
