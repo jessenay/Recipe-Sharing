@@ -1,16 +1,3 @@
-.create-page {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #aad15f;
-  height: 800px;
-  border-radius: 20px;
-  position: relative;
-  top: 40px;
-  border: solid 2px #1a1a1a;
-  font-family: "Playfair Display";
-}
-
 .login-text {
   text-align: center;
   width: 80%;
@@ -18,7 +5,7 @@
 }
 
 .login-heading {
-  border: solid 2px #1a1a1a;
+  /* border: solid 2px #1a1a1a; */
   font-family: "Playfair Display";
 }
 
@@ -31,7 +18,7 @@
   border-radius: 20px;
   position: relative;
   top: 40px;
-  border: solid 2px #1a1a1a;
+  /* border: solid 2px #1a1a1a; */
   font-family: "Playfair Display";
 }
 
@@ -41,7 +28,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  border: solid 2px #ac0202;
+  /* border: solid 2px #ac0202; */
   width: 100%;
 }
 
