@@ -1,10 +1,12 @@
 // route to get logged in user's info (needs the token)
 export const getMe = (token) => {
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${token}`,
-      },
-    };
+  return fetch("/api/users/me", {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
  
   
   export const createUser = (userData) => {
@@ -36,12 +38,6 @@ const search = async () =>
 
 export default { search };
   
-  return fetch('/api/users/me', {
-    headers: {
-      'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
-    },
-  });
 
 export const fetchAllRecipes = async () => {
   try {
