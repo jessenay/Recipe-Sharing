@@ -1,7 +1,25 @@
+.create-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #aad15f;
+  height: 800px;
+  border-radius: 20px;
+  position: relative;
+  top: 40px;
+  border: solid 2px #1a1a1a;
+  font-family: "Playfair Display";
+}
+
 .login-text {
   text-align: center;
-  position: relative;
-  left: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.login-heading {
+  border: solid 2px #1a1a1a;
+  font-family: "Playfair Display";
 }
 
 .login-page {
@@ -13,22 +31,31 @@
   border-radius: 20px;
   position: relative;
   top: 40px;
+  border: solid 2px #1a1a1a;
+  font-family: "Playfair Display";
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-self: center;
+  align-items: center;
   margin-bottom: 20px;
+  border: solid 2px #ac0202;
+  width: 100%;
+}
+
+.login-form-input {
+  border: none !important;
+  border-radius: 10px !important;
 }
 
 .right-section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-right: 20px;
+  align-items: center;
+  margin-right: 20px
 }
 
 .login-picture {
@@ -41,28 +68,73 @@
   border-top-left-radius: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1311px) {
+  .login-picture {
+    max-width: 600px;
+    height: auto;
+    margin-top: 100px;
+  }
+
+  .logo-section {
+    max-width: 600px;
+    position: relative;
+    bottom: 100px;
+  }
+
+  .login-page {
+    height: 600px;
+    width: auto;
+    /* position: relative;
+    top: 150px */
+  }
+  .top-section {
+    width: 600px !important;
+  }
+  .logo-section {
+    height: 150px !important;
+  }
+  .right-section {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 1080px) {
   .login-page {
     flex-direction: column;
+    height: 950px;
   }
-
-  .login-form,
-  .right-section,
-  .login-picture,
-  .top-section,
-  .logo-section {
-    max-width: 100%; /* Take full available width */
-  }
-
-  .login-text,
-  .login-form h2,
-  .signup-section {
-    position: static; /* Reset positioning adjustments */
-    margin: 0 auto; /* Center align */
-  }
-
   .login-picture {
-    max-height: 300px; /* Limit picture size on small devices */
+    height: auto;
+  }
+  .right-section {
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    bottom: 100px
+  }
+}
+
+@media (max-width: 770px) {
+  .login-picture {
+    display: none
+  }
+  .login-page {
+    height: 650px;
+  }
+  .logo-section {
+    position: relative;
+    bottom: 400px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    width: auto !important;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .logo-section {
+    width: auto;
+    font-size: 40px !important;
   }
 }
 
@@ -77,6 +149,9 @@
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
   color: white;
+  /* border: solid 2px blue; */
+  margin: 0 auto;
+  /* margin-right: 20px; */
 }
 
 .top-section {
@@ -86,25 +161,20 @@
   height: 500px;
   width: 800px;
   border-top-right-radius: 20px;
+  /* margin-right: 20px; */
 }
 
-.login-form h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  position: relative;
-  left: 30px;
-}
 
 .signup-section {
   text-align: center;
-  margin-top: 20px;
-  position: relative;
-  left: 30px;
+  /* margin-top: 20px; */
 }
 
 .signup-section a {
-  color: #007bff; /* Bootstrap primary blue, adjust as per your theme */
-  text-decoration: none; /* Optional */
+  color: #007bff;
+  /* Bootstrap primary blue, adjust as per your theme */
+  text-decoration: none;
+  /* Optional */
 }
 
 .button {
@@ -1252,14 +1322,14 @@ form .form-textarea {
   display: block;
 }
 
-form select {
+/* form select {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
   background-repeat: no-repeat;
   background-position-x: 98%;
   background-position-y: 50%;
-}
+} */
 
 form label,
 form .form-label {
@@ -1463,90 +1533,115 @@ label form [type="radio"] {
     flex-grow: 1;
     flex-basis: 0;
   }
+
   .col-sm-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
   }
+
   .col-sm-2 {
     flex: 0 0 16.66667%;
     max-width: 16.66667%;
   }
+
   .col-sm-3 {
     flex: 0 0 25%;
     max-width: 25%;
   }
+
   .col-sm-4 {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
+
   .col-sm-5 {
     flex: 0 0 41.66667%;
     max-width: 41.66667%;
   }
+
   .col-sm-6 {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
   .col-sm-7 {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
   }
+
   .col-sm-8 {
     flex: 0 0 66.66667%;
     max-width: 66.66667%;
   }
+
   .col-sm-9 {
     flex: 0 0 75%;
     max-width: 75%;
   }
+
   .col-sm-10 {
     flex: 0 0 83.33333%;
     max-width: 83.33333%;
   }
+
   .col-sm-11 {
     flex: 0 0 91.66667%;
     max-width: 91.66667%;
   }
+
   .col-sm-12 {
     flex: 0 0 100%;
     max-width: 100%;
   }
+
   .justify-space-between-sm {
     justify-content: space-between;
   }
+
   .justify-space-around-sm {
     justify-content: space-around;
   }
+
   .justify-flex-start-sm {
     justify-content: flex-start;
   }
+
   .justify-flex-end-sm {
     justify-content: flex-end;
   }
+
   .justify-center-sm {
     justify-content: center;
   }
+
   .align-start-sm {
     align-items: flex-start;
   }
+
   .align-stretch-sm {
     align-items: stretch;
   }
+
   .align-end-sm {
     align-items: flex-end;
   }
+
   .align-center-sm {
     align-items: center;
   }
+
   .align-content-start-sm {
     align-content: flex-start;
   }
+
   .align-content-stretch-sm {
     align-content: stretch;
   }
+
   .align-content-end-sm {
     align-content: flex-end;
   }
+
   .align-content-center-sm {
     align-content: center;
   }
@@ -1558,90 +1653,115 @@ label form [type="radio"] {
     flex-grow: 1;
     flex-basis: 0;
   }
+
   .col-md-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
   }
+
   .col-md-2 {
     flex: 0 0 16.66667%;
     max-width: 16.66667%;
   }
+
   .col-md-3 {
     flex: 0 0 25%;
     max-width: 25%;
   }
+
   .col-md-4 {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
+
   .col-md-5 {
     flex: 0 0 41.66667%;
     max-width: 41.66667%;
   }
+
   .col-md-6 {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
   .col-md-7 {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
   }
+
   .col-md-8 {
     flex: 0 0 66.66667%;
     max-width: 66.66667%;
   }
+
   .col-md-9 {
     flex: 0 0 75%;
     max-width: 75%;
   }
+
   .col-md-10 {
     flex: 0 0 83.33333%;
     max-width: 83.33333%;
   }
+
   .col-md-11 {
     flex: 0 0 91.66667%;
     max-width: 91.66667%;
   }
+
   .col-md-12 {
     flex: 0 0 100%;
     max-width: 100%;
   }
+
   .justify-space-between-md {
     justify-content: space-between;
   }
+
   .justify-space-around-md {
     justify-content: space-around;
   }
+
   .justify-flex-start-md {
     justify-content: flex-start;
   }
+
   .justify-flex-end-md {
     justify-content: flex-end;
   }
+
   .justify-center-md {
     justify-content: center;
   }
+
   .align-start-md {
     align-items: flex-start;
   }
+
   .align-stretch-md {
     align-items: stretch;
   }
+
   .align-end-md {
     align-items: flex-end;
   }
+
   .align-center-md {
     align-items: center;
   }
+
   .align-content-start-md {
     align-content: flex-start;
   }
+
   .align-content-stretch-md {
     align-content: stretch;
   }
+
   .align-content-end-md {
     align-content: flex-end;
   }
+
   .align-content-center-md {
     align-content: center;
   }
@@ -1653,90 +1773,115 @@ label form [type="radio"] {
     flex-grow: 1;
     flex-basis: 0;
   }
+
   .col-lg-1 {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
   }
+
   .col-lg-2 {
     flex: 0 0 16.66667%;
     max-width: 16.66667%;
   }
+
   .col-lg-3 {
     flex: 0 0 25%;
     max-width: 25%;
   }
+
   .col-lg-4 {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
+
   .col-lg-5 {
     flex: 0 0 41.66667%;
     max-width: 41.66667%;
   }
+
   .col-lg-6 {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
   .col-lg-7 {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
   }
+
   .col-lg-8 {
     flex: 0 0 66.66667%;
     max-width: 66.66667%;
   }
+
   .col-lg-9 {
     flex: 0 0 75%;
     max-width: 75%;
   }
+
   .col-lg-10 {
     flex: 0 0 83.33333%;
     max-width: 83.33333%;
   }
+
   .col-lg-11 {
     flex: 0 0 91.66667%;
     max-width: 91.66667%;
   }
+
   .col-lg-12 {
     flex: 0 0 100%;
     max-width: 100%;
   }
+
   .justify-space-between-lg {
     justify-content: space-between;
   }
+
   .justify-space-around-lg {
     justify-content: space-around;
   }
+
   .justify-flex-start-lg {
     justify-content: flex-start;
   }
+
   .justify-flex-end-lg {
     justify-content: flex-end;
   }
+
   .justify-center-lg {
     justify-content: center;
   }
+
   .align-start-lg {
     align-items: flex-start;
   }
+
   .align-stretch-lg {
     align-items: stretch;
   }
+
   .align-end-lg {
     align-items: flex-end;
   }
+
   .align-center-lg {
     align-items: center;
   }
+
   .align-content-start-lg {
     align-content: flex-start;
   }
+
   .align-content-stretch-lg {
     align-content: stretch;
   }
+
   .align-content-end-lg {
     align-content: flex-end;
   }
+
   .align-content-center-lg {
     align-content: center;
   }
@@ -1748,86 +1893,110 @@ label form [type="radio"] {
     flex: 0 0 8.33333%;
     max-width: 8.33333%;
   }
+
   .col-xl-2 {
     flex: 0 0 16.66667%;
     max-width: 16.66667%;
   }
+
   .col-xl-3 {
     flex: 0 0 25%;
     max-width: 25%;
   }
+
   .col-xl-4 {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
   }
+
   .col-xl-5 {
     flex: 0 0 41.66667%;
     max-width: 41.66667%;
   }
+
   .col-xl-6 {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
   .col-xl-7 {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
   }
+
   .col-xl-8 {
     flex: 0 0 66.66667%;
     max-width: 66.66667%;
   }
+
   .col-xl-9 {
     flex: 0 0 75%;
     max-width: 75%;
   }
+
   .col-xl-10 {
     flex: 0 0 83.33333%;
     max-width: 83.33333%;
   }
+
   .col-xl-11 {
     flex: 0 0 100%;
     max-width: 100%;
   }
+
   .col-xl-12 {
     flex: 0 0 100%;
     max-width: 100%;
   }
+
   .justify-space-between-xl {
     justify-content: space-between;
   }
+
   .justify-space-around-xl {
     justify-content: space-around;
   }
+
   .justify-flex-start-xl {
     justify-content: flex-start;
   }
+
   .justify-flex-end-xl {
     justify-content: flex-end;
   }
+
   .justify-center-xl {
     justify-content: center;
   }
+
   .align-start-xl {
     align-items: flex-start;
   }
+
   .align-stretch-xl {
     align-items: stretch;
   }
+
   .align-end-xl {
     align-items: flex-end;
   }
+
   .align-center-xl {
     align-items: center;
   }
+
   .align-content-start-xl {
     align-content: flex-start;
   }
+
   .align-content-stretch-xl {
     align-content: stretch;
   }
+
   .align-content-end-xl {
     align-content: flex-end;
   }
+
   .align-content-center-xl {
     align-content: center;
   }

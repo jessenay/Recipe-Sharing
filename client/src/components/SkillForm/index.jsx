@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 
 // Important for useMutation: We import the specific query we'd like to perform from the mutations.js utility
-// import { ADD_SKILL } from '../../utils/mutations';
+import { ADD_SKILL } from '../../utils/mutations';
 
 const SkillForm = ({ profileId }) => {
   const [skill, setSkill] = useState('');
