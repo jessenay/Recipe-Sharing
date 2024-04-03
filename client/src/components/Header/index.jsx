@@ -4,7 +4,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
   return (
     <header
       className="bg-info mb-4 py-3 display-flex align-center"
-      style={{ backgroundColor: "#06052e" }}
+      style={{ backgroundColor: "#aad15f" }}
     >
       <div className="container flex-row">
         <Link className="text-light mr-auto p-2" to="/">
@@ -14,6 +14,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
               fontSize: "26px",
               fontFamily: "Playfair Display",
               fontWeight: 400,
+              color: "#06052e",
             }}
           >
             Recipe Sharing
@@ -27,6 +28,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
               fontFamily: "Poppins",
               fontWeight: 600,
               textTransform: "uppercase",
+              color: "#06052e",
             }}
           >
             Home
@@ -40,6 +42,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
               fontFamily: "Poppins",
               fontWeight: 600,
               textTransform: "uppercase",
+              color: "#06052e",
             }}
           >
             Profile
@@ -58,6 +61,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
                 fontFamily: "Poppins",
                 fontWeight: 600,
                 textTransform: "uppercase",
+                color: "#06052e",
               }}
             >
               Logout
@@ -76,6 +80,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
                 fontFamily: "Poppins",
                 fontWeight: 600,
                 textTransform: "uppercase",
+                color: "#06052e",
               }}
             >
               Login

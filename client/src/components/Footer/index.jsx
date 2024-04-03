@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const location = useLocation();
@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer
       className="w-100 mt-auto text-dark p-4 align-center"
-      style={{ backgroundColor: "#06052e" }}
+      style={{ backgroundColor: "#aad15f" }}
     >
       <div className="container text-center mb-5">
         {location.pathname !== "/" && (
@@ -15,12 +15,12 @@ const Footer = () => {
           </button>
         )}
         <h4
-          className="text-light"
           style={{
             fontSize: "20px",
             fontFamily: "Poppins",
             fontWeight: 600,
             textTransform: "uppercase",
+            color: "#06052e",
           }}
         >
           &copy; {new Date().getFullYear()} - Recipe Sharing
