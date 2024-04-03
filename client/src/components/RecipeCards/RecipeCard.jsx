@@ -2,21 +2,21 @@ import { useState } from 'react';
 import './RecipeCard.css';
 
 //Displays Recipe card
-const RecipeCard = ({ recipes }) => {
+const RecipeCard = ({ recipe }) => {
     return (
         <div className="recipe-card">
-            <h2>{recipes.title}</h2>
-            <img src={recipe.image} alt {...recipe.title} />
-            <p>Prep Time: {recipe.prepTime}</p>
-            <p>Cook Time: {recipe.cookTime}</p>
-            <h3>Ingredients</h3>
-            <ul>
+            <h2 className="title">{recipe.title}</h2>
+            <img src={recipe.image} alt={recipe.title} />
+            <p className="time">Prep Time: {recipe.prepTime}</p>
+            <p className="time">Cook Time: {recipe.cookTime}</p>
+            <h3 className="title">Ingredients</h3>
+            <ul className="list">
                 {recipe.ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
                 ))}
             </ul>
-            <h3>Instructions</h3>
-            <ul>
+            <h3 className="title">Instructions</h3>
+            <ul className="list">
                 {recipe.instructions.map((instruction, index) => (
                     <li key={index}>{instruction}</li>
                 ))}
@@ -131,7 +131,7 @@ const RecipeCards = ({ recipes }) => {
     return (
         <div className="recipe-cards">
             {recipes.map((recipe, index) => (
-                <RecipeCards key={index} recipe={recipe} />
+                <RecipeCard key={index} recipe={recipe} />
             ))}
         </div>
     );
