@@ -32,8 +32,8 @@ export const getMe = (token) => {
   // random recipe API
 import axios from "axios";
 
-const search = async (query) =>
-  axios.get(`http://www.omdbapi.com/?apikey=trilogy&t=${query}&rating=pg`);
+const search = async () =>
+  axios.get(`www.themealdb.com/api/json/v1/1/random.php`);
 
 export default { search };
   
