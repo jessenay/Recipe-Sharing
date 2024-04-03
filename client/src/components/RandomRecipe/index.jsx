@@ -1,6 +1,6 @@
 export default function RandomRecipe() {
   return (
-    <div className="card">
+    <div className="card pt-4">
       <div className="card-body">
         <h3
           style={{
@@ -10,39 +10,43 @@ export default function RandomRecipe() {
             textTransform: "uppercase",
           }}
         >
-          {props.category}
+          Recipe Generator
         </h3>
-        <h5
+        <h2
           className="card-title"
           style={{
-            fontSize: "38px",
+            fontSize: "45px",
             fontFamily: "Playfair Display",
             fontWeight: 400,
-            fontStyle: "italic",
+            textAlign: "center",
           }}
         >
-          {props.title}
-        </h5>
+          Don't know what to cook?
+        </h2>
         <p
           style={{
             fontSize: "18px",
             fontFamily: "Roboto",
             fontWeight: 400,
+            textAlign: "center",
           }}
           className="card-text"
         >
-          {props.instruction}
+          blablabla
         </p>
         <button
           style={{
-            fontSize: "16px",
+            fontSize: "22px",
             fontFamily: "Poppins",
             fontWeight: 500,
+            textTransform: "uppercase",
+            margin: "20px auto",
+            display: "block",
           }}
           href="#"
           className="btn"
         >
-          View Recipe
+          Generate a Recipe
         </button>
       </div>
     </div>
