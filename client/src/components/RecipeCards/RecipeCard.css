@@ -14,3 +14,23 @@
     padding-bottom: 10px;
 }
 
+.recipe-card{
+    text-align: center;
+    align-items: center;
+}
+
+.title{
+    text-align: center;
+    align-items: center;
+}
+
+.time{
+    text-align: center;
+    align-items: center;
+}
+
+.list{
+    text-align: center;
+    align-items: center;
+}
+
