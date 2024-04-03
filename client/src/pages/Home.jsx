@@ -67,8 +67,10 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <RandomRecipe />
-      <RecipeList />
+
+        <RandomRecipe />
+        <RecipeList />
+
     </main>
   );
 };
