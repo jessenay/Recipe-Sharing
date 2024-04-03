@@ -2,10 +2,10 @@ import { useState } from 'react';
 import './RecipeCard.css';
 
 //Displays Recipe card
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipes }) => {
     return (
         <div className="recipe-card">
-            <h2>{recipe.title}</h2>
+            <h2>{recipes.title}</h2>
             <img src={recipe.image} alt {...recipe.title} />
             <p>Prep Time: {recipe.prepTime}</p>
             <p>Cook Time: {recipe.cookTime}</p>
@@ -44,6 +44,7 @@ const RecipeForm = ({ onAddRecipe }) => {
         }))
     };
 
+
     const handleAddIngredient = () => {
         setRecipe((prevRecipe) => ({
             ...prevRecipe,
@@ -52,7 +53,7 @@ const RecipeForm = ({ onAddRecipe }) => {
     };
 
     const handleIngredientChange = (index, value) => {
-        const newIngredients = [...recipe.newIngredients];
+        const newIngredients = [...recipe.ingredients];
         newIngredients[index] = value;
         setRecipe((prevRecipe) => ({
             ...prevRecipe,
@@ -90,16 +91,16 @@ const RecipeForm = ({ onAddRecipe }) => {
     };
 
     return (
-        <form onSubmit={submit}>
-            <label className='label'>Title:</label>
+        <form className="form" onSubmit={submit}>
+            <label className='label'>TITLE:</label>
             <input type="text" name="title" value={recipe.title} onChange={handleChange} require />
-            <label className="label">Image URL:</label>
+            <label className="label">IMAGE URL:</label>
             <input type="text" name="image" value={recipe.image} onChange={handleChange} require />
-            <label className="label">Prep Time:</label>
-            <input type="text" name="prep time" value={recipe.prepTime} onChange={handleChange} require />
-            <label className="label">Cook Time:</label>
-            <input type="text" name="cook time" value={recipe.cookTime} onChange={handleChange} require />
-            <label className="label">Ingredients:</label>
+            <label className="label">PREP TIME:</label>
+            <input type="text" name="prepTime" value={recipe.prepTime} onChange={handleChange} require />
+            <label className="label">COOK TIME:</label>
+            <input type="text" name="cookTime" value={recipe.cookTime} onChange={handleChange} require />
+            <label className="label">INGREDIENTS:</label>
             {recipe.ingredients.map((ingredient, index) => (
                 <input
                     key={index}
@@ -109,8 +110,8 @@ const RecipeForm = ({ onAddRecipe }) => {
                     required
                 />
             ))}
-            <button type="button" onClick={handleAddIngredient}>Add Ingredient</button>
-            <label className="label">Instructions:</label>
+            <button className="button" type="button" onClick={handleAddIngredient}>Add Ingredient</button>
+            <label className="label">INSTRUCTIONS:</label>
             {recipe.instructions.map((instruction, index) => (
                 <textarea
                     key={index}
@@ -119,8 +120,8 @@ const RecipeForm = ({ onAddRecipe }) => {
                     required
                 />
             ))}
-            <button type="button" onClick={handleAddInstruction}>Add Instruction</button>
-            <button type="submit">Add Recipe</button>
+            <button className="button" type="button " onClick={handleAddInstruction}>Add Instruction</button>
+            <button className="button" type="submit">Add Recipe</button>
         </form>
     );
 };
