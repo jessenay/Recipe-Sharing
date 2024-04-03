@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import RecipeList from "../components/RecipeList";
+import { fetchAllRecipes } from "../utils/API"
 
 const Home = () => {
   const navigate = useNavigate();
+  const [recipes, setRecipes] = useState([]);
+
   const handleAddRecipeClick = () => {
     navigate('/add-recipe');
   };
+
+  useEffect(() => {
+    const loadRecipes = async () => {
+      const fetchedRecipes = await fetchAllRecipes();
+      setRecipes(fetchedRecipes);
+    };
+    loadRecipes();
+  }, []);
 
   return (
     <main>
@@ -66,7 +76,16 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <RecipeList />
+      <section className="recipe-list-section">
+        <h2>Featured Recipes</h2>
+        <div className="recipe-list">
+          {recipes.map((recipe) => (
+            <div key={recipe.id} className="recipe-card">
+              <h3>{recipe.title}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 };
