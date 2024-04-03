@@ -1,6 +1,6 @@
 
 
-.label, .recipe-card{
+.label{
     text-align: center;
     align-items: center;
     color:black;
@@ -13,3 +13,4 @@
     padding-top: 25px;
     padding-bottom: 10px;
 }
+
