@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import RecipeList from "../components/RecipeList";
+import RandomRecipeGenerator from "../components/RandomRecipeGenerator";
 import { fetchAllRecipes } from "../utils/API"
 
 const Home = () => {
@@ -76,6 +78,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <RandomRecipeGenerator />
+      <RecipeList />
       <section className="recipe-list-section">
         <h2>Featured Recipes</h2>
         <div className="recipe-list">
