@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import RecipeList from "../components/RecipeList";
+import RandomRecipe from "../components/RandomRecipe";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -66,6 +67,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <RandomRecipe />
       <RecipeList />
     </main>
   );
