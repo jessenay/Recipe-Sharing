@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import API from ".../utils/API";
+import API from "../../utils/API";
+
+  const searchRecipe = () =>
+    API.search()
+      .then((res) => {
+        console.log(res.data);
+        // setSearch("");
+      })
+      .catch((err) => console.log(err));
 
 export default function RandomRecipeGenerator() {
   return (
@@ -39,8 +47,8 @@ export default function RandomRecipeGenerator() {
         </p>
         <Link
           className="text-light p-2"
-          to="/"
-          onClick={() => setLoggedIn(!loggedIn)}
+          to="/home"
+          onClick={() => searchRecipe()}
         >
           <button
             style={{
