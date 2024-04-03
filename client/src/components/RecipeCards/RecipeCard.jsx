@@ -5,17 +5,17 @@ import './RecipeCard.css';
 const RecipeCard = ({ recipe }) => {
     return (
         <div className="recipe-card">
-            <h2 className="title">{recipe.title}</h2>
+            <h2 className="word">{recipe.title}</h2>
             <img src={recipe.image} alt={recipe.title} />
             <p className="time">Prep Time: {recipe.prepTime}</p>
             <p className="time">Cook Time: {recipe.cookTime}</p>
-            <h3 className="title">Ingredients</h3>
+            <h3 className="word">Ingredients</h3>
             <ul className="list">
                 {recipe.ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
                 ))}
             </ul>
-            <h3 className="title">Instructions</h3>
+            <h3 className="word">Instructions</h3>
             <ul className="list">
                 {recipe.instructions.map((instruction, index) => (
                     <li key={index}>{instruction}</li>
@@ -153,5 +153,4 @@ const App = () => {
     );
 };
 
-export default RecipeCard;
-
+export default App;
