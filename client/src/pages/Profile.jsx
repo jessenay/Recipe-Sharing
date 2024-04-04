@@ -3,18 +3,18 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_PROFILE } from '../utils/queries';
 
-
 const Profile = () => {
-  const { loading, data } = useQuery(QUERY_SINGLE_PROFILE);
+  const { profileId } = useParams();
+
+  const { loading, data, error } = useQuery(QUERY_SINGLE_PROFILE, {
+    variables: { profileId },
+  });
 
   const userData = data?.profile || {};
-  console.log(userData);
 
-  // if (loading) return <div>Loading...</div>;
-  // if (error) return <div>Error: {error.message}</div>;
-  // if (!data || !data.profile) return <div>No profile found.</div>; // Add this line to handle undefined data
-
-  // const { profile } = data;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!userData.recipes) return <div>No recipes found.</div>;
 
   return (
     <div>
@@ -24,7 +24,7 @@ const Profile = () => {
           <div key={recipe._id}>
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
-            Display ingredients and instructions
+            {/* Display ingredients and instructions */}
           </div>
         ))}
       </div>
