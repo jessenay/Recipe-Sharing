@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
-import AuthService from '../utils/auth';
+import auth from '../utils/auth';
 import { LOGIN_USER } from '../utils/mutations';
 import loginPicture from '../assets/Pictures/login-picture.png';
 
@@ -9,7 +9,7 @@ const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [loginUser] = useMutation(LOGIN_USER);
+  const [login] = useMutation(LOGIN_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -19,27 +19,24 @@ const LoginForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    if (!form.checkValidity()) {
+    
+    if (form.checkValidity() === false) {
+      event.preventDefault();
       event.stopPropagation();
-    } else {
-      try {
-        const { data } = await loginUser({
-          variables: { ...userFormData },
-        });
-
-        AuthService.login(data.login.token);
-        setUserFormData({ email: '', password: '' });
-        setShowAlert(false);
-
-        // Redirect to the home page after successful login
-        window.location.href = '/home'; // Update the URL programmatically
-      } catch (err) {
-        console.error(err);
-        setShowAlert(true);
-      }
     }
 
-    setValidated(true);
+    try {
+      const { data } = await login({
+        variables: { ...userFormData },
+      });
+
+      auth.login(data.login.token);
+    } catch (err) {
+      console.error(err);
+
+    }
+
+
   };
 
   return (

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import auth from "../../utils/auth";
 
-const Header = ({ loggedIn, setLoggedIn }) => {
+const Header = () => {
+
   return (
     <header
       className="bg-info mb-4 py-3 display-flex align-center"
@@ -34,7 +36,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             Home
           </h1>
         </Link>
-        <Link className="text-light p-2" to="/profile/:profileId">
+        <Link className="text-light p-2" to={`/profile/`}>
           <h1
             className="m-0"
             style={{
@@ -48,11 +50,11 @@ const Header = ({ loggedIn, setLoggedIn }) => {
             Profile
           </h1>
         </Link>
-        {loggedIn ? (
+        {auth.loggedIn() ? (
           <Link
             className="text-light p-2"
             to="/"
-            onClick={() => setLoggedIn(!loggedIn)}
+            onClick={() => auth.logout()}
           >
             <h1
               className="m-0"
