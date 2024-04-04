@@ -4,7 +4,17 @@ type Profile {
   _id: ID
   username: String
   email: String
-  password: String
+  recipes: [Recipe]
+}
+
+type Recipe {
+  _id: ID
+    title: String
+    image: String
+    prepTime: String
+    cookTime: String
+    ingredients: [String]
+    instructions: [String]
 }
 
 type AuthPayload {
@@ -14,15 +24,15 @@ type AuthPayload {
 
 type Query {
   profiles: [Profile]!
-  profile(profileId: ID!): Profile
+  profile: Profile
 }
 
 type Mutation {
   createAccount(username: String!, email: String!, password: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
-  addRecipe(profileId: ID!, recipe: String!): Profile
-  removeAccount(profileId: ID!): Profile
-  removeRecipe(profileId: ID!, recipe: String!): Profile
+  addRecipe(title: String, image: String, prepTime: String, cookTime: String, ingredients: [String], instructions: [String]): Profile
+  #removeAccount(profileId: ID!): Profile
+  removeRecipe(profileId: ID!, recipeId: ID!): Profile
 }
 `;
 
