@@ -1,19 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import RecipeCard from "../components/RecipeCards";
+import RandomRecipeCard from "../components/RandomRecipeCard";
 
 
-const Home = () => {
-  const navigate = useNavigate();
-  const handleAddRecipeClick = () => {
-    navigate("/add-recipe");
-  };
+const RandomRecipe = () => {
 
   return (
-    <main>
-      <RecipeCard />
-    </main>
+    // <main>
+      <RandomRecipeCard />
+    // </main>
   );
 };
 
-export default Home;
+export default RandomRecipe;
