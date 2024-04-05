@@ -33,17 +33,17 @@ query profile {
 }
 `;
 
-const FETCH_RECIPES_QUERY = gql`
-  query {
-    recipes {
-      _id
-      title
-      description
-      image
-      prepTime
-      cookTime
-      ingredients
-      instructions
-    }
+export const FETCH_RECIPES_QUERY = gql`
+query recipes {
+  recipes {
+    _id
+    title
+    description
+    image
+    prepTime
+    cookTime
+    ingredients
+    instructions
   }
+}
 `;

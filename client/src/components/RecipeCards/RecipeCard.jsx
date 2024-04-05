@@ -36,15 +36,10 @@ const RecipeForm = ({ onAdd}) => {
         prepTime: '',
         cookTime: '',
         ingredients: [''],
-        instructions: [''],
-        profileId: ''
+        instructions: ['']
     });
 
-    const [addRecipe, { loading, error }] = useMutation(ADD_RECIPE, {
-        onCompleted: (data) => {
-            if(onAdd) (data.addRecipe);
-        }
-    });
+    const [addRecipe, { loading, error }] = useMutation(ADD_RECIPE);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -90,34 +85,27 @@ const RecipeForm = ({ onAdd}) => {
     const submit = async (e) => {
         e.preventDefault();
         try {
-            // Assuming `profileId` is obtained from props or state/context
-            const { profileId } = recipe;
-    
-            if (!profileId) {
-                console.error("Profile ID is not set. Cannot add recipe.");
-                return;
-            }
+
     
             await addRecipe({
                 variables: {
                     ...recipe,
-                    profileId,
-                    ingredients: recipe.ingredients.filter(ingredient => ingredient.trim() !== ''), // Filter out any empty strings
-                    instructions: recipe.instructions.filter(instruction => instruction.trim() !== '') // Same for instructions
+                    // ingredients: recipe.ingredients.filter(ingredient => ingredient.trim() !== ''), // Filter out any empty strings
+                    // instructions: recipe.instructions.filter(instruction => instruction.trim() !== '') // Same for instructions
                 }
             });
     
+            window.location.replace('/home')
             // Successfully added recipe, now reset the form state
-            setRecipe({
-                title: '',
-                description: '',
-                image: '',
-                prepTime: '',
-                cookTime: '',
-                ingredients: [''],
-                instructions: [''],
-                profileId: '' // Reset profileId if it's being managed in the local state
-            });
+            // setRecipe({
+            //     title: '',
+            //     description: '',
+            //     image: '',
+            //     prepTime: '',
+            //     cookTime: '',
+            //     ingredients: [''],
+            //     instructions: ['']// Reset profileId if it's being managed in the local state
+            // });
         } catch (error) {
             console.error("An error occurred while adding the recipe:", error);
         }
