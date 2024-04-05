@@ -7,12 +7,12 @@ export const NewRecipe = () => {
 
     useEffect(() => {
         axios.get('/api/recipes')
-        .then(response => {
-            setRecipes(response.data);
-        })
-        .catch(error => {
-            console.error('Error fetching recipes;', error);
-        });
+            .then(response => {
+                setRecipes(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching recipes;', error);
+            });
     }, []);
 
     return (
@@ -33,6 +33,12 @@ export const NewRecipe = () => {
                     <ul className="list">
                         {recipe[0].instructions.map((instruction, index) => (
                             <li key={index}>{instruction}</li>
+                        ))}
+                    </ul>
+                    <h3 className="word">Description</h3>
+                    <ul className="list">
+                        {recipe.description.map((description, index) => (
+                            <li key={index}>{description}</li>
                         ))}
                     </ul>
                 </>
