@@ -36,7 +36,6 @@ const Header = () => {
             Home
           </h1>
         </Link>
-<<<<<<< HEAD
         <Link className="text-light p-2" to={`/profile/`}>
           <h1
             className="m-0"
@@ -48,10 +47,6 @@ const Header = () => {
               color: "#06052e",
             }}
           >
-=======
-        <Link className="text-light p-2" to="/profile">
-          <h1 className="m-0" style={{ fontSize: "22px" }}>
->>>>>>> 92a87e938ba25faed7ae735502f8c19c0685a8b9
             Profile
           </h1>
         </Link>
