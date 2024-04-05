@@ -15,18 +15,16 @@ export const CREATE_ACCOUNT = gql`
 `;
 
 export const ADD_RECIPE = gql`
-  mutation addRecipe($profileId: ID!, $title: String!, $image: String, $prepTime: String!, $cookTime: String!, $ingredients: [String!]!, $instructions: [String!]!) {
-    addRecipe(profileId: $profileId, title: $title, description: $description, image: $image, prepTime: $prepTime, cookTime: $cookTime, ingredients: $ingredients, instructions: $instructions) {
+mutation addRecipe($title: String, $description: String, $image: String, $prepTime: String, $cookTime: String, $ingredients: [String], $instructions: [String]) {
+  addRecipe(title: $title, description: $description, image: $image, prepTime: $prepTime, cookTime: $cookTime, ingredients: $ingredients, instructions: $instructions) {
+    _id
+    username
+    email
+    recipes {
       _id
-      title
-      description
-      image
-      prepTime
-      cookTime
-      ingredients
-      instructions
     }
   }
+}
 `;
 
 export const LOGIN_USER = gql`

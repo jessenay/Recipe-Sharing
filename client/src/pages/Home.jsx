@@ -6,24 +6,17 @@ import { NewRecipe } from '../components/RecipeCards/NewRecipe';
 
 import RecipeCard from "../components/RecipeCards/RecipeCard.jsx"
 import RandomRecipeGenerator from "../components/RandomRecipeGenerator";
-import { fetchAllRecipes } from "../utils/API"
+
 
 
 const Home = () => {
   const navigate = useNavigate();
-  const [recipes, setRecipes] = useState([]);
+ 
 
   const handleAddRecipeClick = () => {
     navigate('/add-recipe');
   };
 
-  useEffect(() => {
-    const loadRecipes = async () => {
-      const fetchedRecipes = await fetchAllRecipes();
-      setRecipes(fetchedRecipes);
-    };
-    loadRecipes();
-  }, []);
 
   return (
     <main>
@@ -85,20 +78,21 @@ const Home = () => {
       </section>
 
       <RandomRecipeGenerator />
-      <RecipeList />
+      {/* <RecipeList /> */}
 
       <NewRecipe />
 
       <section className="recipe-list-section">
         <h2>Recipe Gallery</h2>
         <div className="recipe-list">
-          {recipes.length > 0 ? (
-            recipes.map((recipe) => (
-              <RecipeCard key={recipe.id} recipe={recipe} />
-            ))
+          <RecipeList />
+          {/* {recipes.length > 0 ? (
+
+            <RecipeList recipes={recipes} />
+
           ) : (
             <p>No recipes found. Be the first to add a recipe!</p>
-          )}
+          )} */}
         </div>
       </section>
 

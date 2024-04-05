@@ -4,11 +4,9 @@ import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_PROFILE } from '../utils/queries';
 
 const Profile = () => {
-  const { profileId } = useParams();
 
-  const { loading, data, error } = useQuery(QUERY_SINGLE_PROFILE, {
-    variables: { profileId },
-  });
+
+  const { loading, data, error } = useQuery(QUERY_SINGLE_PROFILE);
 
   const userData = data?.profile || {};
 

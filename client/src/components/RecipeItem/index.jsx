@@ -1,17 +1,19 @@
+import { useState } from "react";
+
 export default function RecipeItem(props) {
+
+  const [recipeVisibility, setRecipeVisibility] = useState({});
+
+  const toggleRecipeVisibility = (recipeId) => {
+    setRecipeVisibility((prevState) => ({
+      ...prevState,
+      [recipeId]: !prevState[recipeId],
+    }));
+  };
   return (
     <div className="card">
       <div className="card-body">
-        <h3
-          style={{
-            fontSize: "20px",
-            fontFamily: "Poppins",
-            fontWeight: 600,
-            textTransform: "uppercase",
-          }}
-        >
-          {props.category}
-        </h3>
+      
         <h5
           className="card-title"
           style={{
@@ -31,19 +33,37 @@ export default function RecipeItem(props) {
           }}
           className="card-text"
         >
-          {props.instruction}
+          {props.description}
         </p>
         <button
-          style={{
-            fontSize: "16px",
-            fontFamily: "Poppins",
-            fontWeight: 500,
-          }}
-          href="#"
-          className="btn"
-        >
-          View Recipe
-        </button>
+              onClick={() => toggleRecipeVisibility(props._id)} // Toggle button click event
+              style={{
+                fontSize: "16px",
+                fontFamily: "Poppins",
+                fontWeight: 500,
+              }}
+              className="btn"
+            >
+              {recipeVisibility[props._id] ? "Hide Details" : "View Details"}
+            </button>
+            {recipeVisibility[props._id] && (
+              <div>
+                <p>Prep Time: {props.prepTime}</p>
+                <p>Cook Time: {props.cookTime}</p>
+                <h6>Ingredients:</h6>
+                <ul>
+                  {props.ingredients.map((ingredient, index) => (
+                    <li key={index}>{ingredient}</li>
+                  ))}
+                </ul>
+                <h6>Instructions:</h6>
+                <ol>
+                  {props.instructions.map((instruction, index) => (
+                    <li key={index}>{instruction}</li>
+                  ))}
+                </ol>
+              </div>
+            )}
       </div>
     </div>
   );
