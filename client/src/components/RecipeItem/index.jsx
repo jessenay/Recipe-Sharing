@@ -11,11 +11,11 @@ export default function RecipeItem(props) {
     }));
   };
   return (
-    <div className="card">
-      <div className="card-body">
+    <div className="profile-recipes">
+      <div className="">
       
         <h5
-          className="card-title"
+          className=""
           style={{
             fontSize: "38px",
             fontFamily: "Playfair Display",
@@ -31,7 +31,7 @@ export default function RecipeItem(props) {
             fontFamily: "Roboto",
             fontWeight: 400,
           }}
-          className="card-text"
+          className=""
         >
           {props.description}
         </p>

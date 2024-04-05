@@ -82,7 +82,7 @@ const Home = () => {
       <NewRecipe />
 
       <section className="recipe-list-section">
-        <h2>Recipe Gallery</h2>
+        <h2 className="profile-name">Recipe Gallery</h2>
         <div className="recipe-list">
           <RecipeList />
         </div>

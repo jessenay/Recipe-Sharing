@@ -28,9 +28,9 @@ const Profile = () => {
       <h1 className='profile-name'>{userData.username}'s Recipes</h1>
       <div>
         {userData.recipes.map((recipe) => (
-          <div className="card-body profile-recipes" key={recipe._id}>
+          <div className="profile-recipes" key={recipe._id}>
             <h5
-              className="card-title"
+              className=""
               style={{
                 fontSize: "38px",
                 fontFamily: "Playfair Display",
@@ -41,7 +41,7 @@ const Profile = () => {
               {recipe.title}
             </h5>
             <p
-              className="card-description"
+              className=""
               style={{
                 fontSize: "20px",
                 fontFamily: "Roboto",
