@@ -3,33 +3,31 @@ import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 
 import Auth from "../utils/auth";
 import { searchRecipe } from "../utils/API";
-import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
+// import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 import { useMutation } from "@apollo/client";
-import { SAVE_BOOK } from "../utils/mutations";
+// import { SAVE_BOOK } from "../utils/mutations";
 
-const SearchBooks = () => {
-  const [saveBook] = useMutation(SAVE_BOOK);
+const SearchRandomRecipe = () => {
+//   const [saveBook] = useMutation(SAVE_BOOK);
   // create state for holding returned google api data
-  const [searchedBooks, setSearchedBooks] = useState([]);
+  const [randomRecipe, setRandomRecipe] = useState([]);
   // create state for holding our search field data
-  const [searchInput, setSearchInput] = useState("");
+//   const [searchInput, setSearchInput] = useState("");
 
-  // create state to hold saved bookId values
-  const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
+//   // create state to hold saved bookId values
+//   const [savedRandomRecipeIds, setavedRandomRecipeIds] = useState(
+//     getSavedBookIds()
+//   );
 
   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
-  useEffect(() => {
-    return () => saveBookIds(savedBookIds);
-  });
+//   useEffect(() => {
+//     return () => saveBookIds(savedBookIds);
+//   });
 
   // create method to search for books and set state on form submit
-  const handleFormSubmit = async (event) => {
+  const handleRandomRecipeSearch = async (event) => {
     event.preventDefault();
-
-    if (!searchInput) {
-      return false;
-    }
 
     try {
       const response = await searchRecipe();
@@ -38,18 +36,19 @@ const SearchBooks = () => {
         throw new Error("something went wrong!");
       }
 
-      const { items } = await response.json();
+      const randomRecipe = await response.json();
 
-      const bookData = items.map((book) => ({
-        bookId: book.id,
-        authors: book.volumeInfo.authors || ["No author to display"],
-        title: book.volumeInfo.title,
-        description: book.volumeInfo.description,
-        image: book.volumeInfo.imageLinks?.thumbnail || "",
-      }));
+console.log(randomRecipe);
+    //   // I dont understand this
+    //   const randomRecipeData = items.map((book) => ({
+    //     bookId: book.id,
+    //     authors: book.volumeInfo.authors || ["No author to display"],
+    //     title: book.volumeInfo.title,
+    //     description: book.volumeInfo.description,
+    //     image: book.volumeInfo.imageLinks?.thumbnail || "",
+    //   }));
 
-      setSearchedBooks(bookData);
-      setSearchInput("");
+    //   setRandomRecipe(randomRecipeData);
     } catch (err) {
       console.error(err);
     }
@@ -154,4 +153,4 @@ const SearchBooks = () => {
   );
 };
 
-export default SearchBooks;
+export default SearchRandomRecipe;
