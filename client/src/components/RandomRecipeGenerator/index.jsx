@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
-  const searchRecipe = () =>
-    API.search()
-      .then((res) => {
-        console.log(res.data);
-        // setSearch("");
-      })
-      .catch((err) => console.log(err));
+const searchRecipe = () =>
+  API.search()
+    .then((res) => {
+      console.log(res.data);
+      console.log(res.data.meals);
+      console.log(res.data.meals[0]);
+      console.log(res.data.meals[0].strMeal);
+    })
+    .catch((err) => console.log(err));
 
 export default function RandomRecipeGenerator() {
   return (
