@@ -28,17 +28,17 @@ export const loginUser = (userData) => {
   });
 };
 
-// random recipe API
-import axios from "axios";
+// // random recipe API
+// import axios from "axios";
 
-const searchRecipe = async () =>
-  axios.get(`https://www.themealdb.com/api/json/v1/1/random.php`);
+// const searchRecipe = async () =>
+//   axios.get(`https://www.themealdb.com/api/json/v1/1/random.php`);
 
-  export default { searchRecipe };
+//   export default { searchRecipe };
 
-// export const searchRecipe = () => {
-//   return fetch(`https://www.themealdb.com/api/json/v1/1/random.php`);
-// };
+export const searchRecipe = () => {
+  return fetch(`https://www.themealdb.com/api/json/v1/1/random.php`);
+};
 
 export const fetchAllRecipes = async () => {
   try {
