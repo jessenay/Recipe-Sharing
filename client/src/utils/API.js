@@ -1,12 +1,13 @@
 // route to get logged in user's info (needs the token)
 export const getMe = (token) => {
-    return fetch('/api/users/me', {
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${token}`,
-      },
-    });
-  };
+  return fetch('/api/users/me', {
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+ 
   
   export const createUser = (userData) => {
     return fetch('/api/users', {
@@ -27,4 +28,27 @@ export const getMe = (token) => {
       body: JSON.stringify(userData),
     });
   };
+
+
+  // random recipe API
+import axios from "axios";
+
+const search = async () =>
+  axios.get(`https://www.themealdb.com/api/json/v1/1/random.php`);
+
+export default { search };
   
+
+export const fetchAllRecipes = async () => {
+  try {
+    const response = await fetch('/api/recipes');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const recipes = await response.json();
+    return recipes;
+  } catch (error) {
+    console.error("Failed to fetch recipes:", error);
+    return [];
+  }
+};

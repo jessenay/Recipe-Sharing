@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
-import AuthService from '../utils/auth';
+import auth from '../utils/auth';
 import { LOGIN_USER } from '../utils/mutations';
 import loginPicture from '../assets/Pictures/login-picture.png';
 
@@ -9,7 +9,7 @@ const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [loginUser] = useMutation(LOGIN_USER);
+  const [login] = useMutation(LOGIN_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -19,33 +19,30 @@ const LoginForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    if (!form.checkValidity()) {
+    
+    if (form.checkValidity() === false) {
+      event.preventDefault();
       event.stopPropagation();
-    } else {
-      try {
-        const { data } = await loginUser({
-          variables: { ...userFormData },
-        });
-
-        AuthService.login(data.login.token);
-        setUserFormData({ email: '', password: '' });
-        setShowAlert(false);
-
-        // Redirect to the home page after successful login
-        window.location.href = '/home'; // Update the URL programmatically
-      } catch (err) {
-        console.error(err);
-        setShowAlert(true);
-      }
     }
 
-    setValidated(true);
+    try {
+      const { data } = await login({
+        variables: { ...userFormData },
+      });
+
+      auth.login(data.login.token);
+    } catch (err) {
+      console.error(err);
+
+    }
+
+
   };
 
   return (
     <div className="login-page">
       <div className="login-form">
-        <h2>Login</h2>
+        <h2 className='login-heading'>Login</h2>
         <Form noValidate validated={validated} onSubmit={handleFormSubmit} className='login-text'>
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
             Something went wrong with your login credentials!
@@ -53,7 +50,7 @@ const LoginForm = () => {
 
           <Form.Group className='mb-3'>
             <Form.Label htmlFor='email'>Email</Form.Label>
-            <Form.Control
+            <Form.Control className='form-input login-form-input'
               type='email'
               placeholder='Your email'
               name='email'
@@ -65,7 +62,7 @@ const LoginForm = () => {
 
           <Form.Group className='mb-3'>
             <Form.Label htmlFor='password'>Password</Form.Label>
-            <Form.Control
+            <Form.Control className='form-input login-form-input'
               type='password'
               placeholder='Your password'
               name='password'

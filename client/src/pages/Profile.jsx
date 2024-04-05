@@ -1,43 +1,70 @@
+import React from 'react';
 import { useParams } from 'react-router-dom';
-// Important for useQuery: We import the useQuery hook from @apollo/client
 import { useQuery } from '@apollo/client';
-
-import SkillsList from '../components/RecipeList';
-import SkillForm from '../components/SkillForm';
-
-// Important for useQuery: We import the specific query we'd like to perform from our queries.js utility
 import { QUERY_SINGLE_PROFILE } from '../utils/queries';
 
 const Profile = () => {
   const { profileId } = useParams();
 
-  // Important for useQuery: We pass the query we'd like to execute on component load to the useQuery hook
-  // In this case, the query we want to run also requires query parameters to be passed, which we deliver as a variables object
-  // The useQuery hook will always give back an object, and for the purposes of this app we're using the loading boolean and the data object
-  // The data object will match the same result you'd get if you ran this query within the GraphQL playground
-  const { loading, data } = useQuery(QUERY_SINGLE_PROFILE, {
-    // Important for Query Variables: The useQuery hook is able to take a second argument which is where we will pass the query arguments needed to complete the request for a specific profile
-    // The second argument is passed as an object with a variables property
-    // The variables object will receive each key matching the query definition in utils/queries.js, and the value we'd like to deliver to the server
-    variables: { profileId: profileId },
+  const { loading, data, error } = useQuery(QUERY_SINGLE_PROFILE, {
+    variables: { profileId },
   });
 
-  // Important for useQuery: We use the optional chaining operator to get the resulting profile from our query, or fallback to an empty object if the query isn't resolved yet
-  const profile = data?.profile || {};
+  const userData = data?.profile || {};
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!userData.recipes) return <div>No recipes found.</div>;
+
   return (
     <div>
-      <h2 className="card-header">
-        {profile.name}'s friends have endorsed these skills...
-      </h2>
-
-      {profile.skills?.length > 0 && <SkillsList skills={profile.skills} />}
-
-      <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <SkillForm profileId={profile._id} />
+      <h1 className='profile-name'>{userData.username}'s Recipes</h1>
+      <div>
+        {userData.recipes.map((recipe) => (
+          <div className="card-body profile-recipes">
+        <h5
+          className="card-title"
+          style={{
+            fontSize: "38px",
+            fontFamily: "Playfair Display",
+            fontWeight: 400,
+            fontStyle: "italic",
+          }}
+        >
+          {recipe.title}
+        </h5>
+        <p
+          style={{
+            fontSize: "18px",
+            fontFamily: "Roboto",
+            fontWeight: 400,
+          }}
+          className="card-text"
+        >
+          {recipe.instructions}
+        </p>
+        <button
+          style={{
+            fontSize: "16px",
+            fontFamily: "Poppins",
+            fontWeight: 500,
+          }}
+          href="#"
+          className="btn"
+        >
+          View Recipe
+        </button>
+      </div>
+          // <div key={recipe._id}>
+          //   <h3>{recipe.title}</h3>
+          //   <p>{recipe.description}</p>
+          //   <p>{recipe.image}</p>
+          //   <p>{recipe.prepTime}</p>
+          //   <p>{recipe.cookTime}</p>
+          //   <p>{recipe.ingredients}</p>
+          //   <p>{recipe.instructions}</p>
+          // </div>
+        ))}
       </div>
     </div>
   );

@@ -1,22 +1,25 @@
 import { Link } from "react-router-dom";
+import auth from "../../utils/auth";
 
-const Header = ({ loggedIn, setLoggedIn }) => {
+const Header = () => {
+
   return (
     <header
       className="bg-info mb-4 py-3 display-flex align-center"
-      style={{ backgroundColor: "#06052e" }}
+      style={{ backgroundColor: "#aad15f" }}
     >
       <div className="container flex-row">
-        <Link className="text-light mr-auto p-2" to="/">
+        <Link className="text-light mr-auto p-2" to="/home">
           <h1
             className="m-0"
             style={{
               fontSize: "26px",
               fontFamily: "Playfair Display",
               fontWeight: 400,
+              color: "#06052e",
             }}
           >
-            Recipe Sharing
+            Feastbook
           </h1>
         </Link>
         <Link className="text-light p-2" to="/home">
@@ -27,12 +30,13 @@ const Header = ({ loggedIn, setLoggedIn }) => {
               fontFamily: "Poppins",
               fontWeight: 600,
               textTransform: "uppercase",
+              color: "#06052e",
             }}
           >
             Home
           </h1>
         </Link>
-        <Link className="text-light p-2" to="/profile/:profileId">
+        <Link className="text-light p-2" to={`/profile/`}>
           <h1
             className="m-0"
             style={{
@@ -40,16 +44,17 @@ const Header = ({ loggedIn, setLoggedIn }) => {
               fontFamily: "Poppins",
               fontWeight: 600,
               textTransform: "uppercase",
+              color: "#06052e",
             }}
           >
             Profile
           </h1>
         </Link>
-        {loggedIn ? (
+        {auth.loggedIn() ? (
           <Link
             className="text-light p-2"
             to="/"
-            onClick={() => setLoggedIn(!loggedIn)}
+            onClick={() => auth.logout()}
           >
             <h1
               className="m-0"
@@ -58,6 +63,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
                 fontFamily: "Poppins",
                 fontWeight: 600,
                 textTransform: "uppercase",
+                color: "#06052e",
               }}
             >
               Logout
@@ -76,6 +82,7 @@ const Header = ({ loggedIn, setLoggedIn }) => {
                 fontFamily: "Poppins",
                 fontWeight: 600,
                 textTransform: "uppercase",
+                color: "#06052e",
               }}
             >
               Login
