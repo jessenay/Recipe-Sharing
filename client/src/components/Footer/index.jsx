@@ -23,7 +23,7 @@ const Footer = () => {
             color: "#06052e",
           }}
         >
-          &copy; {new Date().getFullYear()} - Recipe Sharing
+          &copy; {new Date().getFullYear()} - Feastbook
         </h4>
       </div>
     </footer>

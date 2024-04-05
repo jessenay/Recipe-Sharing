@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RecipeList from "../components/RecipeList";
+import RecipeCard from "../components/RecipeCards/RecipeCard.jsx"
 import RandomRecipeGenerator from "../components/RandomRecipeGenerator";
 import { fetchAllRecipes } from "../utils/API"
 
@@ -82,13 +83,15 @@ const Home = () => {
       <RandomRecipeGenerator />
       <RecipeList />
       <section className="recipe-list-section">
-        <h2>Featured Recipes</h2>
+        <h2>Recipe Gallery</h2>
         <div className="recipe-list">
-          {recipes.map((recipe) => (
-            <div key={recipe.id} className="recipe-card">
-              <h3>{recipe.title}</h3>
-            </div>
-          ))}
+          {recipes.length > 0 ? (
+            recipes.map((recipe) => (
+              <RecipeCard key={recipe.id} recipe={recipe} />
+            ))
+          ) : (
+            <p>No recipes found. Be the first to add a recipe!</p>
+          )}
         </div>
       </section>
     </main>
