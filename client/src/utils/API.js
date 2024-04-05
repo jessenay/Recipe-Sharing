@@ -33,10 +33,10 @@ export const getMe = (token) => {
   // random recipe API
 import axios from "axios";
 
-const search = async () =>
+const searchRecipe = async () =>
   axios.get(`https://www.themealdb.com/api/json/v1/1/random.php`);
 
-export default { search };
+export default { searchRecipe };
   
 
 export const fetchAllRecipes = async () => {
