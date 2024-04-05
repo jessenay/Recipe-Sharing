@@ -5,8 +5,12 @@ const recipeSchema = new Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: true,
+  },
   image: {
-    type: String, // Optional
+    type: String,
   },
   prepTime: {
     type: String,

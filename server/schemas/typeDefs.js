@@ -28,6 +28,11 @@ type Query {
   profile: Profile
 }
 
+type Query {
+  recipes: [Recipe]!
+  recipe: Recipe
+}
+
 type Mutation {
   createAccount(username: String!, email: String!, password: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
