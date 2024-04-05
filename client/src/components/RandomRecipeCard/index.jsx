@@ -1,7 +1,7 @@
 import "../RecipeCards/RecipeCard.css";
 
 //Displays Recipe card
-export default function RecipeCard(data) {
+export default function RandomRecipeCard() {
   return (
     <div className="recipe-card">
       <h2 className="word"></h2>
