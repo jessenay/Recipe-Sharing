@@ -1,3 +1,5 @@
+import axios from "axios";
+
 // route to get logged in user's info (needs the token)
 export const getMe = (token) => {
   return fetch("/api/users/me", {
@@ -29,12 +31,11 @@ export const loginUser = (userData) => {
 };
 
 // random recipe API
-import axios from "axios";
 
-const searchRecipe = async () =>
+const search = async () =>
   axios.get(`https://www.themealdb.com/api/json/v1/1/random.php`);
 
-  export default { searchRecipe };
+export default { search };
 
 // export const searchRecipe = () => {
 //   return fetch(`https://www.themealdb.com/api/json/v1/1/random.php`);
