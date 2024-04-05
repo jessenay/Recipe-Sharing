@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './RecipeCard.css';
+import { useMutation } from '@apollo/client';
+import { ADD_RECIPE } from '../../utils/mutations';
 
 //Displays Recipe card
 const RecipeCard = ({ recipe }) => {
@@ -26,14 +28,22 @@ const RecipeCard = ({ recipe }) => {
 };
 
 //Adds new recipes
-const RecipeForm = ({ onAddRecipe }) => {
+const RecipeForm = ({ onAdd}) => {
     const [recipe, setRecipe] = useState({
         title: '',
+        description: '',
         image: '',
         prepTime: '',
         cookTime: '',
-        ingredients: [],
-        instructions: [],
+        ingredients: [''],
+        instructions: [''],
+        profileId: ''
+    });
+
+    const [addRecipe, { loading, error }] = useMutation(ADD_RECIPE, {
+        onCompleted: (data) => {
+            if(onAdd) (data.addRecipe);
+        }
     });
 
     const handleChange = (e) => {
@@ -77,17 +87,40 @@ const RecipeForm = ({ onAddRecipe }) => {
         }));
     };
 
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault();
-        onAddRecipe(recipe);
-        setRecipe({
-            title: '',
-            image: '',
-            prepTime: '',
-            cookTime: '',
-            ingredients: [],
-            instructions: [],
-        });
+        try {
+            // Assuming `profileId` is obtained from props or state/context
+            const { profileId } = recipe;
+    
+            if (!profileId) {
+                console.error("Profile ID is not set. Cannot add recipe.");
+                return;
+            }
+    
+            await addRecipe({
+                variables: {
+                    ...recipe,
+                    profileId,
+                    ingredients: recipe.ingredients.filter(ingredient => ingredient.trim() !== ''), // Filter out any empty strings
+                    instructions: recipe.instructions.filter(instruction => instruction.trim() !== '') // Same for instructions
+                }
+            });
+    
+            // Successfully added recipe, now reset the form state
+            setRecipe({
+                title: '',
+                description: '',
+                image: '',
+                prepTime: '',
+                cookTime: '',
+                ingredients: [''],
+                instructions: [''],
+                profileId: '' // Reset profileId if it's being managed in the local state
+            });
+        } catch (error) {
+            console.error("An error occurred while adding the recipe:", error);
+        }
     };
 
     return (
