@@ -11,6 +11,21 @@ const searchRecipe = () =>
     })
     .catch((err) => console.log(err));
 
+
+
+      const handleRandomRecipeClick = () => {
+        navigate("/random-recipe");
+        searchRecipe();
+      };
+
+      // useEffect(() => {
+      //   const loadRecipes = async () => {
+      //     const fetchedRecipes = await fetchAllRecipes();
+      //     setRecipes(fetchedRecipes);
+      //   };
+      //   loadRecipes();
+      // }, []);
+
 export default function RandomRecipeGenerator() {
   return (
     <div className="card pt-4">
@@ -49,8 +64,9 @@ export default function RandomRecipeGenerator() {
         </p>
         <Link
           className="text-light p-2"
-          to="/home"
-          onClick={() => searchRecipe()}
+          to="/random-recipe"
+          onClick={handleRandomRecipeClick}
+          // {() => searchRecipe()}
         >
           <button
             style={{
