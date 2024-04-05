@@ -90,22 +90,10 @@ const RecipeForm = ({ onAdd}) => {
             await addRecipe({
                 variables: {
                     ...recipe,
-                    // ingredients: recipe.ingredients.filter(ingredient => ingredient.trim() !== ''), // Filter out any empty strings
-                    // instructions: recipe.instructions.filter(instruction => instruction.trim() !== '') // Same for instructions
                 }
             });
     
             window.location.replace('/home')
-            // Successfully added recipe, now reset the form state
-            // setRecipe({
-            //     title: '',
-            //     description: '',
-            //     image: '',
-            //     prepTime: '',
-            //     cookTime: '',
-            //     ingredients: [''],
-            //     instructions: ['']// Reset profileId if it's being managed in the local state
-            // });
         } catch (error) {
             console.error("An error occurred while adding the recipe:", error);
         }

@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import AuthService from '../utils/auth';
 import { CREATE_ACCOUNT } from '../utils/mutations';
 import loginPicture from '../assets/Pictures/login-picture.png';
-import { useNavigate } from 'react-router-dom'; // useNavigate for redirection
+import { useNavigate } from 'react-router-dom';
 
 const CreateAccountForm = () => {
     const [userFormData, setUserFormData] = useState({
@@ -14,9 +14,9 @@ const CreateAccountForm = () => {
     });
     const [validated, setValidated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false); // For success message display
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const [createAccount] = useMutation(CREATE_ACCOUNT);
-    const navigate = useNavigate(); // Initialize navigate
+    const navigate = useNavigate();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -34,10 +34,10 @@ const CreateAccountForm = () => {
                 const { data } = await createAccount({
                     variables: { ...userFormData },
                 });
-                AuthService.login(data.createAccount.token); // Save the token.
-                setShowSuccessMessage(true); // Display success message.
+                AuthService.login(data.createAccount.token);
+                setShowSuccessMessage(true);
                 setTimeout(() => {
-                    navigate('/home'); // Redirect after 3 seconds.
+                    navigate('/home');
                 }, 3000);
             } catch (err) {
                 console.error(err);
