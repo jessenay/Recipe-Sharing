@@ -11,7 +11,7 @@ import RandomRecipeGenerator from "../components/RandomRecipeGenerator";
 
 const Home = () => {
   const navigate = useNavigate();
- 
+
 
   const handleAddRecipeClick = () => {
     navigate('/add-recipe');
@@ -78,7 +78,6 @@ const Home = () => {
       </section>
 
       <RandomRecipeGenerator />
-      {/* <RecipeList /> */}
 
       <NewRecipe />
 
@@ -86,13 +85,6 @@ const Home = () => {
         <h2>Recipe Gallery</h2>
         <div className="recipe-list">
           <RecipeList />
-          {/* {recipes.length > 0 ? (
-
-            <RecipeList recipes={recipes} />
-
-          ) : (
-            <p>No recipes found. Be the first to add a recipe!</p>
-          )} */}
         </div>
       </section>
 

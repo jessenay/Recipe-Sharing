@@ -10,7 +10,7 @@ const Profile = () => {
 
   const userData = data?.profile || {};
 
-  const [recipeVisibility, setRecipeVisibility] = useState({}); // State to control visibility of recipe details
+  const [recipeVisibility, setRecipeVisibility] = useState({});
 
   const toggleRecipeVisibility = (recipeId) => {
     setRecipeVisibility((prevState) => ({
@@ -51,7 +51,7 @@ const Profile = () => {
               {recipe.description}
             </p>
             <button
-              onClick={() => toggleRecipeVisibility(recipe._id)} // Toggle button click event
+              onClick={() => toggleRecipeVisibility(recipe._id)}
               style={{
                 fontSize: "16px",
                 fontFamily: "Poppins",
