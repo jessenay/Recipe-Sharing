@@ -94,6 +94,8 @@ const RecipeForm = ({ onAddRecipe }) => {
         <form className="form" onSubmit={submit}>
             <label className='label'>TITLE:</label>
             <input type="text" name="title" value={recipe.title} onChange={handleChange} require />
+            <label className='label'>DESCRIPTION:</label>
+            <input type="text" name="description" value={recipe.description} onChange={handleChange} require />
             <label className="label">IMAGE URL:</label>
             <input type="text" name="image" value={recipe.image} onChange={handleChange} require />
             <label className="label">PREP TIME:</label>

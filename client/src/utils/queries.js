@@ -23,6 +23,7 @@ query profile {
       _id
       cookTime
       image
+      description
       ingredients
       instructions
       prepTime
