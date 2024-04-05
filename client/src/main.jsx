@@ -1,14 +1,14 @@
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import App from './App.jsx'
-import Home from './pages/Home'
-import Profile from './pages/Profile'
-import Error from './pages/Error'
-import LoginForm from './pages/LoginForm.jsx'
-import CreateAccountForm from './pages/CreateAccount'
-import RecipeForm from './components/RecipeCards/RecipeCard.jsx'
-import RandomRecipe from "./pages/RandomRecipe.jsx";
+import App from "./App.jsx";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Error from "./pages/Error";
+import LoginForm from "./pages/LoginForm.jsx";
+import CreateAccountForm from "./pages/CreateAccount";
+import RecipeForm from "./components/RecipeCards/RecipeCard.jsx";
+// import RandomRecipe from "./pages/RandomRecipe.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,14 +36,14 @@ const router = createBrowserRouter([
         path: "/add-recipe",
         element: <RecipeForm />,
       },
-      {
-        path: "/random-recipe",
-        element: <RandomRecipe />,
-      },
+      // {
+      //   path: "/random-recipe",
+      //   element: <RandomRecipe />,
+      // },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
-)
+);
