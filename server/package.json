@@ -13,10 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.7.1",
-<<<<<<< HEAD
-=======
-    "apollo-server-express": "^3.13.0",
->>>>>>> 92a87e938ba25faed7ae735502f8c19c0685a8b9
     "bcrypt": "^5.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.17.2",
