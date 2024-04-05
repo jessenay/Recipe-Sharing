@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RecipeList from "../components/RecipeList";
+
+import { NewRecipe } from '../components/RecipeCards/NewRecipe';
+
 import RecipeCard from "../components/RecipeCards/RecipeCard.jsx"
 import RandomRecipeGenerator from "../components/RandomRecipeGenerator";
 import { fetchAllRecipes } from "../utils/API"
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -82,6 +86,9 @@ const Home = () => {
 
       <RandomRecipeGenerator />
       <RecipeList />
+
+      <NewRecipe />
+
       <section className="recipe-list-section">
         <h2>Recipe Gallery</h2>
         <div className="recipe-list">
@@ -94,6 +101,7 @@ const Home = () => {
           )}
         </div>
       </section>
+
     </main>
   );
 };
