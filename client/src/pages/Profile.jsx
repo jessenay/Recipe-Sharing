@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_PROFILE } from '../utils/queries';
@@ -24,7 +24,17 @@ const Profile = () => {
           <div key={recipe._id}>
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
-            {/* Display ingredients and instructions */}
+            <button onClick={() => setRecipeVisible(!recipeVisible)}>
+              Show Recipe
+            </button>
+            {recipeVisible && (
+              <>
+                <h4>Ingredients:</h4>
+                <p>{recipe.ingredients}</p>
+                <h4>Instructions:</h4>
+                <p>{recipe.instructions}</p>
+              </>
+            )}
           </div>
         ))}
       </div>
