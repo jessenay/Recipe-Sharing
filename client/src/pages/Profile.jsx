@@ -41,7 +41,7 @@ const Profile = () => {
           }}
           className="card-text"
         >
-          {recipe.instructions}
+          {recipe.description}
         </p>
         <button
           style={{
