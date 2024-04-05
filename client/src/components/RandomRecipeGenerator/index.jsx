@@ -1,30 +1,25 @@
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
-const searchRecipe = () =>
-  API.search()
+const searchRandomRecipe = () =>
+  API.searchRecipe()
     .then((res) => {
       console.log(res.data);
       console.log(res.data.meals);
       console.log(res.data.meals[0]);
       console.log(res.data.meals[0].strMeal);
+      setResult(res.data);
     })
     .catch((err) => console.log(err));
 
-
+      // useEffect(() => {
+      //   searchMovie("The Matrix");
+      // }, []);
 
       const handleRandomRecipeClick = () => {
         navigate("/random-recipe");
-        searchRecipe();
+        searchRandomRecipe();
       };
-
-      // useEffect(() => {
-      //   const loadRecipes = async () => {
-      //     const fetchedRecipes = await fetchAllRecipes();
-      //     setRecipes(fetchedRecipes);
-      //   };
-      //   loadRecipes();
-      // }, []);
 
 export default function RandomRecipeGenerator() {
   return (
