@@ -9,7 +9,7 @@ const Home = () => {
   const [recipes, setRecipes] = useState([]);
 
   const handleAddRecipeClick = () => {
-    navigate('/add-recipe');
+    navigate("/add-recipe");
   };
 
   useEffect(() => {
@@ -19,6 +19,34 @@ const Home = () => {
     };
     loadRecipes();
   }, []);
+
+  // create method to search for books and set state on form submit
+  const handleRandomRecipe = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await searchRecipe();
+
+      if (!response.ok) {
+        throw new Error("something went wrong!");
+      }
+
+      const { randomRecipe } = await response.json();
+      console.log({ randomRecipe });
+
+      // const bookData = items.map((book) => ({
+      //   bookId: book.id,
+      //   authors: book.volumeInfo.authors || ['No author to display'],
+      //   title: book.volumeInfo.title,
+      //   description: book.volumeInfo.description,
+      //   image: book.volumeInfo.imageLinks?.thumbnail || '',
+      // }));
+
+      // setGeneratedRecipe(recipeData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <main>
@@ -61,7 +89,7 @@ const Home = () => {
                 </p>
                 <button
                   className="btn"
-                  onClick={handleAddRecipeClick}
+                  onClick={handleRandomRecipe}
                   style={{
                     fontSize: "22px",
                     fontFamily: "Poppins",
