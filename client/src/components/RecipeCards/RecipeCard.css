@@ -17,20 +17,29 @@
 .recipe-card{
     text-align: center;
     align-items: center;
+    padding: 8px;
 }
 
-.title{
+.word{
     text-align: center;
     align-items: center;
+    font-family: "Playfair Display";
+    font-size: 40px;
+    text-decoration: underline double;
+    padding: 8px;
 }
 
 .time{
     text-align: center;
     align-items: center;
+    font-family: "Playfair Display";
+    font-size: 15px;
+    padding-top: 8px;
 }
 
 .list{
-    text-align: center;
-    align-items: center;
+    list-style-type: none;
+    text-align: justify;
+    font-family: "Playfair Display";
 }
 

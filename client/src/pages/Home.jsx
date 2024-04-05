@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import RecipeList from "../components/RecipeList";
+import { NewRecipe } from '../components/RecipeCards/NewRecipe';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -67,6 +68,7 @@ const Home = () => {
         </div>
       </section>
       <RecipeList />
+      <NewRecipe />
     </main>
   );
 };
