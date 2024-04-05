@@ -12,10 +12,13 @@ const Profile = () => {
 
   const userData = data?.profile || {};
 
-  const [recipeVisible, setRecipeVisible] = useState(false); // State to control visibility of recipe details
+  const [recipeVisibility, setRecipeVisibility] = useState({}); // State to control visibility of recipe details
 
-  const toggleRecipeVisibility = () => {
-    setRecipeVisible(!recipeVisible);
+  const toggleRecipeVisibility = (recipeId) => {
+    setRecipeVisibility((prevState) => ({
+      ...prevState,
+      [recipeId]: !prevState[recipeId],
+    }));
   };
 
   if (loading) return <div>Loading...</div>;
@@ -50,7 +53,7 @@ const Profile = () => {
               {recipe.description}
             </p>
             <button
-              onClick={toggleRecipeVisibility} // Toggle button click event
+              onClick={() => toggleRecipeVisibility(recipe._id)} // Toggle button click event
               style={{
                 fontSize: "16px",
                 fontFamily: "Poppins",
@@ -58,9 +61,9 @@ const Profile = () => {
               }}
               className="btn"
             >
-              {recipeVisible ? "Hide Details" : "View Details"}
+              {recipeVisibility[recipe._id] ? "Hide Details" : "View Details"}
             </button>
-            {recipeVisible && (
+            {recipeVisibility[recipe._id] && (
               <div>
                 <p>Prep Time: {recipe.prepTime}</p>
                 <p>Cook Time: {recipe.cookTime}</p>
