@@ -1,5 +1,5 @@
 const { Profile, Recipe } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth'); // Adjust the path to auth.js as necessary
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 
 const resolvers = {
@@ -14,6 +14,14 @@ const resolvers = {
         return await Profile.findById(context.user._id).populate('recipes');
       }
       throw AuthenticationError
+    },
+    // Fetch all recipes
+    recipes: async () => {
+      return await Recipe.find();
+    },
+    // Fetch a single recipe by ID
+    recipe: async (_, args, context) => {
+      return await Recipe.findById(args.id).populate('profile');
     },
   },
   Mutation: {
