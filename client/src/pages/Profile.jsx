@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import AuthService from '../utils/auth';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_PROFILE } from '../utils/queries';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!AuthService.loggedIn()) {
+      navigate('/');
+    }
+  }, [navigate]);
 
 
   const { loading, data, error } = useQuery(QUERY_SINGLE_PROFILE);
@@ -28,9 +37,9 @@ const Profile = () => {
       <h1 className='profile-name'>{userData.username}'s Recipes</h1>
       <div>
         {userData.recipes.map((recipe) => (
-          <div className="card-body profile-recipes" key={recipe._id}>
+          <div className="profile-recipes" key={recipe._id}>
             <h5
-              className="card-title"
+              className=""
               style={{
                 fontSize: "38px",
                 fontFamily: "Playfair Display",
@@ -41,7 +50,7 @@ const Profile = () => {
               {recipe.title}
             </h5>
             <p
-              className="card-description"
+              className=""
               style={{
                 fontSize: "20px",
                 fontFamily: "Roboto",

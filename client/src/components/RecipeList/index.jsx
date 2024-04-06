@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 export default function RecipeList() {
 
   const { loading, data } = useQuery(FETCH_RECIPES_QUERY);
+  console.log(data);
 
 
   const recipes = data?.recipes || [];
