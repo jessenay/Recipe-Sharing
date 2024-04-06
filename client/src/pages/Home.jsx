@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RecipeList from "../components/RecipeList";
-import RandomRecipeGenerator from "../components/RandomRecipeGenerator";
 import { fetchAllRecipes } from "../utils/API"
 
 const Home = () => {
@@ -79,7 +78,61 @@ const Home = () => {
         </div>
       </section>
 
-      <RandomRecipeGenerator />
+      <div className="card pt-4">
+        <div className="card-body">
+          <h3
+            style={{
+              fontSize: "20px",
+              fontFamily: "Poppins",
+              fontWeight: 600,
+              textTransform: "uppercase",
+            }}
+          >
+            Recipe Generator
+          </h3>
+          <h2
+            className="card-title"
+            style={{
+              fontSize: "45px",
+              fontFamily: "Playfair Display",
+              fontWeight: 400,
+              textAlign: "center",
+            }}
+          >
+            Don't know what to cook?
+          </h2>
+          <p
+            style={{
+              fontSize: "18px",
+              fontFamily: "Roboto",
+              fontWeight: 400,
+              textAlign: "center",
+            }}
+            className="card-text"
+          >
+            blablabla
+          </p>
+          <Link
+            className="text-light p-2"
+            to="/random-recipe"
+          >
+            <button
+              style={{
+                fontSize: "22px",
+                fontFamily: "Poppins",
+                fontWeight: 500,
+                textTransform: "uppercase",
+                margin: "20px auto",
+                display: "block",
+              }}
+              href="#"
+              className="btn"
+            >
+              Generate a Recipe
+            </button>
+          </Link>
+        </div>
+      </div>
       <RecipeList />
       <section className="recipe-list-section">
         <h2>Featured Recipes</h2>
