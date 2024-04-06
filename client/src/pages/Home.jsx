@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RecipeList from "../components/RecipeList";
-
+import AuthService from "../utils/auth";
 import { NewRecipe } from '../components/RecipeCards/NewRecipe';
-
 import RecipeCard from "../components/RecipeCards/RecipeCard.jsx"
 import RandomRecipeGenerator from "../components/RandomRecipeGenerator";
-
-
+import auth from "../utils/auth";
 
 const Home = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!AuthService.loggedIn()) {
+      navigate('/');
+    }
+  }, [navigate]);
 
 
   const handleAddRecipeClick = () => {
     navigate('/add-recipe');
   };
-
 
   return (
     <main>
@@ -82,7 +85,7 @@ const Home = () => {
       <NewRecipe />
 
       <section className="recipe-list-section">
-        <h2>Recipe Gallery</h2>
+        <h2 className="profile-name">Recipe Gallery</h2>
         <div className="recipe-list">
           <RecipeList />
         </div>

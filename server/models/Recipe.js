@@ -25,6 +25,11 @@ const recipeSchema = new Schema({
   instructions: [{
     type: String,
   }],
+  profile: {
+    type: Schema.Types.ObjectId,
+    ref: 'Profile',
+    required: true,
+  },
 });
 
 const Recipe = model('Recipe', recipeSchema);

@@ -16,6 +16,7 @@ type Recipe {
     cookTime: String
     ingredients: [String]
     instructions: [String]
+    profile: Profile
 }
 
 type AuthPayload {

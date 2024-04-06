@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import AuthService from '../utils/auth';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_PROFILE } from '../utils/queries';
+import { useNavigate } from 'react-router-dom';
+import RecipeItem from '../components/RecipeItem';
 
 const Profile = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!AuthService.loggedIn()) {
+      navigate('/');
+    }
+  }, [navigate]);
 
 
   const { loading, data, error } = useQuery(QUERY_SINGLE_PROFILE);

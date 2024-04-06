@@ -6,6 +6,7 @@ import './RecipeList.css';
 export default function RecipeList() {
 
   const { loading, data } = useQuery(FETCH_RECIPES_QUERY);
+  console.log(data);
 
   if (loading) return <p>Loading recipes...</p>;
 

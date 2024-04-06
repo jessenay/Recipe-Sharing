@@ -41,6 +41,9 @@ query recipes {
     cookTime
     ingredients
     instructions
+    profile {
+      username
+    }
   }
 }
 `;
