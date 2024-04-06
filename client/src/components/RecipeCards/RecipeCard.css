@@ -1,18 +1,68 @@
 
+/* card form */
+
+.recipes{
+    color:black;
+    padding: 8px;
+    font-size: 40px;
+    font-family: "Playfair Display";
+    font-weight: 600;
+    text-decoration: underline double;
+    text-align: center;
+}
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    border-radius: 8px;
+    background-image: url('https://img.freepik.com/free-photo/top-view-sketchbook-cottage-cheese-with-fresh-ripe-yellow-red-cherries-arranged-around-grey_141793-12013.jpg');
+    background-position: center;
+    background-size: cover;
+    background-color:rgb(33 32 136 / 40%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid #ccc;
+    margin-bottom: 50px;
+}
+
+.form {
+    border-radius: 8px;
+    align-content: center;
+    display:grid;
+    justify-content: center;
+  }
 
 .label{
-    text-align: center;
-    align-items: center;
     color:black;
-    display: flex;
     padding: 8px;
-    font-size: 25px;
-    font-family: "Poppins";
+    font-size: 20px;
+    font-family: "Playfair Display";
     font-weight: 600;
-    text-decoration:underline;
-    padding-top: 25px;
-    padding-bottom: 10px;
+    text-decoration: underline;
+    text-align: center;
+
 }
+
+.input {
+    margin-bottom: 10px;
+    width: (70%); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgb(255, 251, 240);
+  }
+
+  .button{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .button:hover {
+    background-color: #011073; 
+  }
+
+
+/* diplayed card */
 
 .recipe-card{
     text-align: center;
