@@ -1,5 +1,5 @@
 const { Profile, Recipe } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth'); // Adjust the path to auth.js as necessary
+const { signToken, AuthenticationError } = require('../utils/auth');
 
 
 const resolvers = {
@@ -14,6 +14,14 @@ const resolvers = {
         return await Profile.findById(context.user._id).populate('recipes');
       }
       throw AuthenticationError
+    },
+    // Fetch all recipes
+    recipes: async () => {
+      return await Recipe.find().populate('profile');
+    },
+    // Fetch a single recipe by ID
+    recipe: async (_, args, context) => {
+      return await Recipe.findById(args.id).populate('profile');
     },
   },
   Mutation: {
@@ -31,23 +39,39 @@ const resolvers = {
     },
     // Add a recipe to a user's profile
     addRecipe: async (_, args, context) => {
-      if (context.user) {
-        const newRecipe = await Recipe.create(args);
-
-        const updatedUser = await Profile.findOneAndUpdate({
-          _id: context.user._id
-        
-        }, 
-        {
-          $push: { recipes: newRecipe._id }
-        },
+      if (!context.user) {
+        throw new AuthenticationError('You must be logged in to perform this action.');
+      }
+    
+      // Add the profile ID to the recipe document
+      const recipeData = {
+        ...args,
+        profile: context.user._id  // Assuming context.user._id contains the Profile ID of the logged-in user
+      };
+    
+      try {
+        // Create the new recipe with the profile reference
+        const newRecipe = await Recipe.create(recipeData);
+    
+        // Optionally, push the new recipe's ID to the user's profile
+        // This step might not be necessary if you decide to query recipes directly 
+        // without relying on the user's recipe array
+        await Profile.findByIdAndUpdate(
+          context.user._id,
+          { $push: { recipes: newRecipe._id } },
           { new: true }
         );
-
-        return updatedUser;
+    
+        // Populate the profile information in the newly created recipe before returning
+        // Note: This assumes you want to return the full recipe document including the profile info.
+        // You might need to adjust based on your front-end expectations.
+        return Recipe.findById(newRecipe._id).populate('profile');
+      } catch (error) {
+        console.error("Error adding new recipe:", error);
+        throw new Error("Failed to add new recipe.");
       }
-      throw AuthenticationError
     },
+    
     // Remove an account by ID
     // removeAccount: async (_, { profileId }) => {
     //     return await Profile.findByIdAndDelete(profileId);

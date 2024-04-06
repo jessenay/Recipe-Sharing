@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './RecipeCard.css';
-// import RecipeCard from '../RecipeCard';
+import { useMutation } from '@apollo/client';
+import { ADD_RECIPE } from '../../utils/mutations';
 
 //Displays Recipe card
 const RecipeCard = ({ recipe }) => {
@@ -27,15 +28,18 @@ const RecipeCard = ({ recipe }) => {
 };
 
 //Adds new recipes
-const RecipeForm = ({ onAddRecipe }) => {
+const RecipeForm = ({ onAdd}) => {
     const [recipe, setRecipe] = useState({
         title: '',
+        description: '',
         image: '',
         prepTime: '',
         cookTime: '',
-        ingredients: [],
-        instructions: [],
+        ingredients: [''],
+        instructions: ['']
     });
+
+    const [addRecipe, { loading, error }] = useMutation(ADD_RECIPE);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -78,23 +82,29 @@ const RecipeForm = ({ onAddRecipe }) => {
         }));
     };
 
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault();
-        onAddRecipe(recipe);
-        setRecipe({
-            title: '',
-            image: '',
-            prepTime: '',
-            cookTime: '',
-            ingredients: [],
-            instructions: [],
-        });
+        try {
+
+    
+            await addRecipe({
+                variables: {
+                    ...recipe,
+                }
+            });
+    
+            window.location.replace('/home')
+        } catch (error) {
+            console.error("An error occurred while adding the recipe:", error);
+        }
     };
 
     return (
         <form className="form" onSubmit={submit}>
             <label className='label'>TITLE:</label>
             <input type="text" name="title" value={recipe.title} onChange={handleChange} require />
+            <label className='label'>DESCRIPTION:</label>
+            <input type="text" name="description" value={recipe.description} onChange={handleChange} require />
             <label className="label">IMAGE URL:</label>
             <input type="text" name="image" value={recipe.image} onChange={handleChange} require />
             <label className="label">PREP TIME:</label>

@@ -5,8 +5,12 @@ const recipeSchema = new Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: true,
+  },
   image: {
-    type: String, // Optional
+    type: String,
   },
   prepTime: {
     type: String,
@@ -21,6 +25,11 @@ const recipeSchema = new Schema({
   instructions: [{
     type: String,
   }],
+  profile: {
+    type: Schema.Types.ObjectId,
+    ref: 'Profile',
+    required: true,
+  },
 });
 
 const Recipe = model('Recipe', recipeSchema);

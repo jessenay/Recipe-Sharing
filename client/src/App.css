@@ -178,6 +178,20 @@
   border-radius: 10px;
 }
 
+.profile-name {
+  font-family: "Playfair Display";
+  text-align: center;
+  border-bottom: solid black 2px;
+  padding: 60px;
+}
+
+.profile-recipes {
+  font-family: "Playfair Display";
+  border-bottom: solid black 2px;
+  padding: 60px;
+
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */

@@ -1,49 +1,48 @@
+import { useState } from "react";
+import "./RecipeItem.css";
+
 export default function RecipeItem(props) {
+  const [recipeVisibility, setRecipeVisibility] = useState(false);
+
+  const toggleRecipeVisibility = () => {
+    setRecipeVisibility(!recipeVisibility);
+  };
+
   return (
-    <div className="card">
-      <div className="card-body">
-        <h3
-          style={{
-            fontSize: "20px",
-            fontFamily: "Poppins",
-            fontWeight: 600,
-            textTransform: "uppercase",
-          }}
-        >
-          {props.category}
-        </h3>
-        <h5
-          className="card-title"
-          style={{
-            fontSize: "38px",
-            fontFamily: "Playfair Display",
-            fontWeight: 400,
-            fontStyle: "italic",
-          }}
-        >
-          {props.title}
-        </h5>
-        <p
-          style={{
-            fontSize: "18px",
-            fontFamily: "Roboto",
-            fontWeight: 400,
-          }}
-          className="card-text"
-        >
-          {props.instruction}
-        </p>
+    <div className="single-recipe-card">
+      <div className="single-card-header">{props.title}</div>
+      <div className="single-card-body">
+        <p className="content">{props.description}</p>
         <button
-          style={{
-            fontSize: "16px",
-            fontFamily: "Poppins",
-            fontWeight: 500,
-          }}
-          href="#"
-          className="btn"
+          className="btn-view-details"
+          onClick={toggleRecipeVisibility}
         >
-          View Recipe
+          {recipeVisibility ? "Hide Details" : "View Details"}
         </button>
+        {recipeVisibility && (
+          <div>
+            <div className="detail-section">
+              <p className="detail">Prep Time: {props.prepTime}</p>
+              <p className="detail">Cook Time: {props.cookTime}</p>
+            </div>
+            <div className="detail-section">
+              <h6 className="subtitle">Ingredients:</h6>
+              <ul className="list-unstyled">
+                {props.ingredients.map((ingredient, index) => (
+                  <li key={index}>{ingredient}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="detail-section">
+              <h6 className="subtitle">Instructions:</h6>
+              <ol className="list-unstyled">
+                {props.instructions.map((instruction, index) => (
+                  <li key={index}>{instruction}</li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
