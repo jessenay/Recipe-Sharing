@@ -5,7 +5,7 @@ const Header = () => {
 
   return (
     <header
-      className="bg-info mb-4 py-3 display-flex align-center"
+      className="bg-info mb-4 display-flex align-center"
       style={{ backgroundColor: "#aad15f" }}
     >
       <div className="container flex-row">
@@ -13,7 +13,7 @@ const Header = () => {
           <h1
             className="m-0"
             style={{
-              fontSize: "26px",
+              fontSize: "60px",
               fontFamily: "Playfair Display",
               fontWeight: 400,
               color: "#06052e",
@@ -22,7 +22,7 @@ const Header = () => {
             Feastbook
           </h1>
         </Link>
-        <Link className="text-light p-2" to="/home">
+        <Link className="text-light p-2 nav-buttons" to="/home">
           <h1
             className="m-0"
             style={{
@@ -36,7 +36,7 @@ const Header = () => {
             Home
           </h1>
         </Link>
-        <Link className="text-light p-2" to={`/profile/`}>
+        <Link className="text-light p-2 nav-buttons" to={`/profile/`}>
           <h1
             className="m-0"
             style={{
@@ -52,7 +52,7 @@ const Header = () => {
         </Link>
         {auth.loggedIn() ? (
           <Link
-            className="text-light p-2"
+            className="text-light p-2 nav-buttons"
             to="/"
             onClick={() => auth.logout()}
           >
