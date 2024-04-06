@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RecipeList from "../components/RecipeList";
-
-import { NewRecipe } from '../components/RecipeCards/NewRecipe';
-
-import RecipeCard from "../components/RecipeCards/RecipeCard.jsx"
-import RandomRecipeGenerator from "../components/RandomRecipeGenerator";
-
-
+import AuthService from "../utils/auth";
+import { NewRecipe } from "../components/RecipeCards/NewRecipe";
 
 const Home = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!AuthService.loggedIn()) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const handleAddRecipeClick = () => {
-    navigate('/add-recipe');
+    navigate("/add-recipe");
   };
-
 
   return (
     <main>
@@ -77,17 +76,63 @@ const Home = () => {
         </div>
       </section>
 
-      <RandomRecipeGenerator />
+      <div
+        className="pt-4"
+        style={{
+          borderBottom: "solid black 2px",
+          marginTop: "2%",
+        }}
+      >
+        <div className="card-body">
+          <h3
+            style={{
+              fontSize: "20px",
+              fontFamily: "Poppins",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              textAlign: "center",
+            }}
+          >
+            Recipe Generator
+          </h3>
+          <h2
+            className="card-title"
+            style={{
+              fontSize: "45px",
+              fontFamily: "Playfair Display",
+              fontWeight: 400,
+              textAlign: "center",
+            }}
+          >
+            Don't know what to cook?
+          </h2>
+          <Link className="text-light p-2" to="/random-recipe">
+            <button
+              style={{
+                fontSize: "22px",
+                fontFamily: "Poppins",
+                fontWeight: 500,
+                textTransform: "uppercase",
+                margin: "20px auto",
+                display: "block",
+              }}
+              href="#"
+              className="btn"
+            >
+              Generate a Recipe
+            </button>
+          </Link>
+        </div>
+      </div>
 
       <NewRecipe />
 
       <section className="recipe-list-section">
-        <h2>Recipe Gallery</h2>
+        <h2 className="profile-name">Recipe Gallery</h2>
         <div className="recipe-list">
           <RecipeList />
         </div>
       </section>
-
     </main>
   );
 };
