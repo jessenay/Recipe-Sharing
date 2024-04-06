@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './RecipeCard.css';
+// import RecipeCard from '../RecipeCard';
 
 //Displays Recipe card
 const RecipeCard = ({ recipe }) => {
