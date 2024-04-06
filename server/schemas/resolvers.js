@@ -43,39 +43,26 @@ const resolvers = {
         throw new AuthenticationError('You must be logged in to perform this action.');
       }
     
-      // Add the profile ID to the recipe document
       const recipeData = {
         ...args,
-        profile: context.user._id  // Assuming context.user._id contains the Profile ID of the logged-in user
+        profile: context.user._id
       };
     
       try {
-        // Create the new recipe with the profile reference
         const newRecipe = await Recipe.create(recipeData);
     
-        // Optionally, push the new recipe's ID to the user's profile
-        // This step might not be necessary if you decide to query recipes directly 
-        // without relying on the user's recipe array
         await Profile.findByIdAndUpdate(
           context.user._id,
           { $push: { recipes: newRecipe._id } },
           { new: true }
         );
     
-        // Populate the profile information in the newly created recipe before returning
-        // Note: This assumes you want to return the full recipe document including the profile info.
-        // You might need to adjust based on your front-end expectations.
         return Recipe.findById(newRecipe._id).populate('profile');
       } catch (error) {
         console.error("Error adding new recipe:", error);
         throw new Error("Failed to add new recipe.");
       }
     },
-    
-    // Remove an account by ID
-    // removeAccount: async (_, { profileId }) => {
-    //     return await Profile.findByIdAndDelete(profileId);
-    // },
     // Remove a recipe from a user's profile
     removeRecipe: async (_, { profileId, recipe }) => {
       return await Profile.findByIdAndUpdate(
@@ -85,19 +72,16 @@ const resolvers = {
       );
     },
     login: async (_, { email, password }) => {
-      // Find the user by email
       const user = await Profile.findOne({ email });
       if (!user) {
         throw new Error('User not found');
       }
 
-      // Compare the submitted password using the isCorrectPassword method
       const validPassword = await user.isCorrectPassword(password);
       if (!validPassword) {
         throw new Error('Wrong password');
       }
 
-      // If the passwords match, generate and return the JWT token
       const token = signToken(user);
 
       return { token, user };
