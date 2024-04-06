@@ -32,14 +32,8 @@ export const loginUser = (userData) => {
 
 // random recipe API
 
-const search = async () =>
+export const search = async () =>
   axios.get(`https://www.themealdb.com/api/json/v1/1/random.php`);
-
-export default { search };
-
-// export const searchRecipe = () => {
-//   return fetch(`https://www.themealdb.com/api/json/v1/1/random.php`);
-// };
 
 export const fetchAllRecipes = async () => {
   try {
