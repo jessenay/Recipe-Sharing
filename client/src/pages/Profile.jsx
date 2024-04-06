@@ -26,38 +26,14 @@ const Profile = () => {
   return (
     <div>
       <h1 className='profile-name'>{userData.username}'s Recipes</h1>
-      <div>
-        {userData.recipes.map((recipe) => (
-          <div className="card-body profile-recipes" key={recipe._id}>
-            <h5
-              className="card-title"
-              style={{
-                fontSize: "38px",
-                fontFamily: "Playfair Display",
-                fontWeight: 400,
-                fontStyle: "italic",
-              }}
-            >
-              {recipe.title}
-            </h5>
-            <p
-              className="card-description"
-              style={{
-                fontSize: "20px",
-                fontFamily: "Roboto",
-                fontWeight: 300,
-              }}
-            >
-              {recipe.description}
-            </p>
+      {userData.recipes.map((recipe) => (
+        <div className="single-recipe-card" key={recipe._id}>
+          <div className="single-card-header">{recipe.title}</div>
+          <div className="single-card-body">
+            <p className="content">{recipe.description}</p>
             <button
+              className="btn-view-details"
               onClick={() => toggleRecipeVisibility(recipe._id)}
-              style={{
-                fontSize: "16px",
-                fontFamily: "Poppins",
-                fontWeight: 500,
-              }}
-              className="btn"
             >
               {recipeVisibility[recipe._id] ? "Hide Details" : "View Details"}
             </button>
@@ -65,14 +41,14 @@ const Profile = () => {
               <div>
                 <p>Prep Time: {recipe.prepTime}</p>
                 <p>Cook Time: {recipe.cookTime}</p>
-                <h6>Ingredients:</h6>
-                <ul>
+                <h6 className="subtitle">Ingredients:</h6>
+                <ul className="list-unstyled">
                   {recipe.ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
                   ))}
                 </ul>
-                <h6>Instructions:</h6>
-                <ol>
+                <h6 className="subtitle">Instructions:</h6>
+                <ol className="list-unstyled">
                   {recipe.instructions.map((instruction, index) => (
                     <li key={index}>{instruction}</li>
                   ))}
@@ -80,8 +56,8 @@ const Profile = () => {
               </div>
             )}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };

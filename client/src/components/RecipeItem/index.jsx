@@ -1,69 +1,48 @@
 import { useState } from "react";
+import "./RecipeItem.css";
 
 export default function RecipeItem(props) {
+  const [recipeVisibility, setRecipeVisibility] = useState(false);
 
-  const [recipeVisibility, setRecipeVisibility] = useState({});
-
-  const toggleRecipeVisibility = (recipeId) => {
-    setRecipeVisibility((prevState) => ({
-      ...prevState,
-      [recipeId]: !prevState[recipeId],
-    }));
+  const toggleRecipeVisibility = () => {
+    setRecipeVisibility(!recipeVisibility);
   };
+
   return (
-    <div className="card">
-      <div className="card-body">
-      
-        <h5
-          className="card-title"
-          style={{
-            fontSize: "38px",
-            fontFamily: "Playfair Display",
-            fontWeight: 400,
-            fontStyle: "italic",
-          }}
-        >
-          {props.title}
-        </h5>
-        <p
-          style={{
-            fontSize: "18px",
-            fontFamily: "Roboto",
-            fontWeight: 400,
-          }}
-          className="card-text"
-        >
-          {props.description}
-        </p>
+    <div className="single-recipe-card">
+      <div className="single-card-header">{props.title}</div>
+      <div className="single-card-body">
+        <p className="content">{props.description}</p>
         <button
-              onClick={() => toggleRecipeVisibility(props._id)} // Toggle button click event
-              style={{
-                fontSize: "16px",
-                fontFamily: "Poppins",
-                fontWeight: 500,
-              }}
-              className="btn"
-            >
-              {recipeVisibility[props._id] ? "Hide Details" : "View Details"}
-            </button>
-            {recipeVisibility[props._id] && (
-              <div>
-                <p>Prep Time: {props.prepTime}</p>
-                <p>Cook Time: {props.cookTime}</p>
-                <h6>Ingredients:</h6>
-                <ul>
-                  {props.ingredients.map((ingredient, index) => (
-                    <li key={index}>{ingredient}</li>
-                  ))}
-                </ul>
-                <h6>Instructions:</h6>
-                <ol>
-                  {props.instructions.map((instruction, index) => (
-                    <li key={index}>{instruction}</li>
-                  ))}
-                </ol>
-              </div>
-            )}
+          className="btn-view-details"
+          onClick={toggleRecipeVisibility}
+        >
+          {recipeVisibility ? "Hide Details" : "View Details"}
+        </button>
+        {recipeVisibility && (
+          <div>
+            <div className="detail-section">
+              <p className="detail">Prep Time: {props.prepTime}</p>
+              <p className="detail">Cook Time: {props.cookTime}</p>
+            </div>
+            <div className="detail-section">
+              <h6 className="subtitle">Ingredients:</h6>
+              <ul className="list-unstyled">
+                {props.ingredients.map((ingredient, index) => (
+                  <li key={index}>{ingredient}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="detail-section">
+              <h6 className="subtitle">Instructions:</h6>
+              <ol className="list-unstyled">
+                {props.instructions.map((instruction, index) => (
+                  <li key={index}>{instruction}</li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
