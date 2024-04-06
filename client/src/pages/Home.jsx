@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import RecipeList from "../components/RecipeList";
-import { fetchAllRecipes } from "../utils/API"
+import { fetchAllRecipes } from "../utils/API";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -78,14 +78,20 @@ const Home = () => {
         </div>
       </section>
 
-      <div className="card pt-4">
-        <div className="card-body">
+      <div className=" pt-4">
+        <div
+          className="card-body"
+          style={{
+            paddingTop: "2%",
+          }}
+        >
           <h3
             style={{
               fontSize: "20px",
               fontFamily: "Poppins",
               fontWeight: 600,
               textTransform: "uppercase",
+              textAlign: "center",
             }}
           >
             Recipe Generator
@@ -101,21 +107,7 @@ const Home = () => {
           >
             Don't know what to cook?
           </h2>
-          <p
-            style={{
-              fontSize: "18px",
-              fontFamily: "Roboto",
-              fontWeight: 400,
-              textAlign: "center",
-            }}
-            className="card-text"
-          >
-            blablabla
-          </p>
-          <Link
-            className="text-light p-2"
-            to="/random-recipe"
-          >
+          <Link className="text-light p-2" to="/random-recipe">
             <button
               style={{
                 fontSize: "22px",
@@ -124,6 +116,8 @@ const Home = () => {
                 textTransform: "uppercase",
                 margin: "20px auto",
                 display: "block",
+                backgroundColor: "rgb(170, 209, 95)",
+                color: "rgb(6, 5, 46)",
               }}
               href="#"
               className="btn"
