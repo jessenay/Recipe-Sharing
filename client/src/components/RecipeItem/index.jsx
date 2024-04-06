@@ -36,7 +36,7 @@ export default function RecipeItem(props) {
           {props.description}
         </p>
         <button
-              onClick={() => toggleRecipeVisibility(props._id)} // Toggle button click event
+              onClick={() => toggleRecipeVisibility(props._id)}
               style={{
                 fontSize: "16px",
                 fontFamily: "Poppins",
