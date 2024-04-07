@@ -23,6 +23,12 @@ const RecipeCard = ({ recipe }) => {
                     <li key={index}>{instruction}</li>
                 ))}
             </ul>
+            <h3 className="word">Description</h3>
+            <ul className="list">
+                {recipe.description.map((description, index) => (
+                    <li key={index}>{description}</li>
+                ))}
+            </ul>
         </div>
     );
 };
@@ -35,6 +41,9 @@ const RecipeForm = ({ onAdd}) => {
         image: '',
         prepTime: '',
         cookTime: '',
+        ingredients: [],
+        instructions: [],
+        description: [],
         ingredients: [''],
         instructions: ['']
     });
@@ -82,6 +91,23 @@ const RecipeForm = ({ onAdd}) => {
         }));
     };
 
+    const handleAddDescription = () => {
+        setRecipe((prevRecipe) => ({
+            ...prevRecipe,
+            description: [...prevRecipe.description, ''],
+        }));
+    };
+
+    const handleDescriptionChange = (index, value) => {
+        const newDescription = [...recipe.description];
+        newDescription[index] = value;
+        setRecipe((prevRecipe) => ({
+            ...prevRecipe,
+            description: newDescription,
+        }));
+    };
+    
+
     const submit = async (e) => {
         e.preventDefault();
         try {
@@ -97,6 +123,16 @@ const RecipeForm = ({ onAdd}) => {
         } catch (error) {
             console.error("An error occurred while adding the recipe:", error);
         }
+        onAddRecipe(recipe);
+        setRecipe({
+            title: '',
+            image: '',
+            prepTime: '',
+            cookTime: '',
+            ingredients: [],
+            instructions: [],
+            description: [],
+        });
     };
 
     return (
@@ -134,7 +170,18 @@ const RecipeForm = ({ onAdd}) => {
                     required
                 />
             ))}
-            <button className="button" type="button " onClick={handleAddInstruction}>Add Instruction</button>
+            <button className="button" type="button " onClick={handleAddInstruction}>Add Ingredient</button>
+            <label className="label">DESCRIPTION:</label>
+            {recipe.description.map((description, index) => (
+                <input
+                    key={index}
+                    type="text"
+                    value={description}
+                    onChange={(e) => handleDescriptionChange(index, e.target.value)}
+                    required
+                />
+            ))}
+            <button className="button" type="button" onClick={handleAddDescription}>Add Description</button>
             <button className="button" type="submit">Add Recipe</button>
         </form>
         </div>
