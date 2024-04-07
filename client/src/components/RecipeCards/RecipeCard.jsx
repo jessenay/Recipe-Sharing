@@ -100,20 +100,22 @@ const RecipeForm = ({ onAdd}) => {
     };
 
     return (
+        <div className='form-container'>
         <form className="form" onSubmit={submit}>
             <label className='label'>TITLE:</label>
-            <input type="text" name="title" value={recipe.title} onChange={handleChange} require />
+            <input className="input" type="text" name="title" value={recipe.title} onChange={handleChange} require />
             <label className='label'>DESCRIPTION:</label>
-            <input type="text" name="description" value={recipe.description} onChange={handleChange} require />
+            <input className="input" type="text" name="description" value={recipe.description} onChange={handleChange} require />
             <label className="label">IMAGE URL:</label>
-            <input type="text" name="image" value={recipe.image} onChange={handleChange} require />
+            <input className="input" type="text" name="image" value={recipe.image} onChange={handleChange} require />
             <label className="label">PREP TIME:</label>
-            <input type="text" name="prepTime" value={recipe.prepTime} onChange={handleChange} require />
+            <input className="input" type="text" name="prepTime" value={recipe.prepTime} onChange={handleChange} require />
             <label className="label">COOK TIME:</label>
-            <input type="text" name="cookTime" value={recipe.cookTime} onChange={handleChange} require />
+            <input className="input" type="text" name="cookTime" value={recipe.cookTime} onChange={handleChange} require />
             <label className="label">INGREDIENTS:</label>
             {recipe.ingredients.map((ingredient, index) => (
                 <input
+                    className="input"
                     key={index}
                     type="text"
                     value={ingredient}
@@ -125,15 +127,17 @@ const RecipeForm = ({ onAdd}) => {
             <label className="label">INSTRUCTIONS:</label>
             {recipe.instructions.map((instruction, index) => (
                 <textarea
+                    className="input"
                     key={index}
                     value={instruction}
                     onChange={(e) => handleInstructionChange(index, e.target.value)}
                     required
                 />
             ))}
-            <button className="button" type="button " onClick={handleAddInstruction}>Add Instruction</button>
+            <button className="button" type="button" onClick={handleAddDescription}>Add Description</button>
             <button className="button" type="submit">Add Recipe</button>
         </form>
+        </div>
     );
 };
 
@@ -157,7 +161,7 @@ const App = () => {
 
     return (
         <div className="App">
-            <h1>Recipes</h1>
+            <h1 className="recipes">ADD YOUR RECIPE</h1>
             <RecipeForm onAddRecipe={handleAddRecipe} />
             <RecipeCards recipes={recipes} />
         </div>
