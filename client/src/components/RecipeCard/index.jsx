@@ -1,23 +1,7 @@
 import "../RecipeCards/RecipeCard.css";
 
 //Displays Recipe card
-const RecipeCard = ({ recipe }) => {
-
-  const submit = async (e) => {
-    e.preventDefault();
-    try {
-      await addRecipe({
-        variables: {
-          ...recipe,
-        },
-      });
-
-      window.location.replace("/home");
-    } catch (error) {
-      console.error("An error occurred while adding the recipe:", error);
-    }
-  };
-
+const RecipeCard = ({ recipe, children }) => {
   return (
     <div className="recipe-card">
       <h2 className="word">{recipe.title}</h2>
@@ -48,9 +32,7 @@ const RecipeCard = ({ recipe }) => {
           </li>
         ))}
       </ul>
-      <button className="button" type="submit" onClick={submit}>
-        Sve Recipe
-      </button>
+      {children}
     </div>
   );
 };
