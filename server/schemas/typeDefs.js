@@ -37,7 +37,7 @@ type Query {
 type Mutation {
   createAccount(username: String!, email: String!, password: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
-  addRecipe(title: String, description: String, image: String, prepTime: String, cookTime: String, ingredients: [String], instructions: [String]): Profile
+  addRecipe(title: String!, description: String, image: String, prepTime: String, cookTime: String, ingredients: [String!]!, instructions: [String!]!): Profile
   #removeAccount(profileId: ID!): Profile
   removeRecipe(profileId: ID!, recipeId: ID!): Profile
 }

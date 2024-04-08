@@ -1,7 +1,7 @@
 import "../RecipeCards/RecipeCard.css";
 
 //Displays Recipe card
-const RecipeCard = ({ recipe }) => {
+const RecipeCard = ({ recipe, children }) => {
   return (
     <div className="recipe-card">
       <h2 className="word">{recipe.title}</h2>
@@ -27,11 +27,12 @@ const RecipeCard = ({ recipe }) => {
       <h3 className="word">Instructions</h3>
       <ul className="list" style={{ fontFamily: "Roboto", fontSize: "18px" }}>
         {recipe.instructions.map((instruction, index) => (
-          <li style={{ marginBottom: "2%", lineHeight: '22px' }} key={index}>
+          <li style={{ marginBottom: "2%", lineHeight: "22px" }} key={index}>
             {instruction}
           </li>
         ))}
       </ul>
+      {children}
     </div>
   );
 };
