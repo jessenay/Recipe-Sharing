@@ -8,6 +8,7 @@ import React, { useMemo } from "react";
 export default function RecipeList() {
   const { loading, data } = useQuery(FETCH_RECIPES_QUERY);
 
+
   // Using useMemo to sort the recipes based on _id in descending order.
   const recipes = useMemo(() => {
     const unsortedRecipes = data?.recipes || [];
@@ -27,6 +28,7 @@ export default function RecipeList() {
     <div className="container pt-4">
       {recipes.map((recipe) => (
         <RecipeItem key={recipe.id}
+          author={recipe.profile.username}
           title={recipe.title}
           description={recipe.description}
           image={recipe.image}

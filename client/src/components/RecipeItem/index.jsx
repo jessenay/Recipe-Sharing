@@ -3,13 +3,13 @@ import "./RecipeItem.css";
 
 export default function RecipeItem(props) {
   const [recipeVisibility, setRecipeVisibility] = useState(false);
-
   const toggleRecipeVisibility = () => {
     setRecipeVisibility(!recipeVisibility);
   };
 
   return (
     <div className="single-recipe-card">
+      <div> Author: {props.author} </div>
       <div className="single-card-header">{props.title}</div>
       <div className="single-card-body">
         <p className="content">{props.description}</p>
