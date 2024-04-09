@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AuthService from '../utils/auth';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_SINGLE_PROFILE } from '../utils/queries';
+import { FETCH_RECIPES_QUERY, QUERY_SINGLE_PROFILE } from '../utils/queries';
 import { useNavigate } from 'react-router-dom';
 import RecipeItem from '../components/RecipeItem';
 import { REMOVE_RECIPE } from '../utils/mutations';
@@ -40,6 +40,8 @@ const Profile = () => {
     try {
       await removeRecipe({
         variables: { recipeId },
+        refetchQueries: [{ query: QUERY_SINGLE_PROFILE },
+        {query: FETCH_RECIPES_QUERY},]
       });
     } catch (e) {
       console.error("Error deleting recipe:", e);

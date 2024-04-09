@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import './RecipeList.css';
 import React, { useState, useEffect } from "react";
 
+
 export default function RecipeList() {
   const { loading, data } = useQuery(FETCH_RECIPES_QUERY);
   const [recipes, setRecipes] = useState([]);
