@@ -14,10 +14,7 @@ export default function RecipeItem(props) {
       <div className="single-card-header">{props.title}</div>
       <div className="single-card-body">
         <p className="content">{props.description}</p>
-        <button
-          className="btn-view-details"
-          onClick={toggleRecipeVisibility}
-        >
+        <button className="btn-view-details" onClick={toggleRecipeVisibility}>
           {recipeVisibility ? "Hide Details" : "View Details"}
         </button>
         {recipeVisibility && (
@@ -45,6 +42,19 @@ export default function RecipeItem(props) {
           </div>
         )}
       </div>
+      <Button
+        className="btn-danger btn-view-details"
+        onClick={() => removeRecipe()}
+        disabled={loading}
+        style={{
+          marginLeft: "10px",
+          margin: "20px auto",
+          display: "block",
+          fontFamily: "Roboto",
+        }}
+      >
+        Delete
+      </Button>
     </div>
   );
 }
