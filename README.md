@@ -22,15 +22,15 @@
   This was created from the minds of Angel Huichapa, Jesse Nay, Kyler Jansson, Magali Lebron, and Kendall Henderson. Along with referencing the last mini project, help from Karina, JayTee, and Robert, and then utilizing ChatGPT and Black box for clarification, followed by research, research, research.
 
   ## Questions
-  GitHub: maglb
-          jessenay
-          KylerJansson
-          Angel-Huichapa
+  GitHub: maglb,
+          jessenay,
+          KylerJansson,
+          Angel-Huichapa,
           kpaige-henderson
   
   GitHub Repo: https://github.com/jessenay/Recipe-Sharing
 
-  by email magali.lb21@gmail.com
+  Email magali.lb21@gmail.com
            jessenay26@gmail.com
            kylerjansson@gmail.com  
            angelhuichapa157@gmail.com
