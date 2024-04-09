@@ -7,7 +7,6 @@ const recipeSchema = new Schema({
   },
   description: {
     type: String,
-    required: true,
   },
   image: {
     type: String,
@@ -18,16 +17,19 @@ const recipeSchema = new Schema({
   cookTime: {
     type: String,
   },
-  ingredients: [{
-    type: String,
-   
-  }],
-  instructions: [{
-    type: String,
-  }],
+  ingredients: [
+    {
+      type: String,
+    },
+  ],
+  instructions: [
+    {
+      type: String,
+    },
+  ],
   profile: {
     type: Schema.Types.ObjectId,
-    ref: 'Profile',
+    ref: "Profile",
     required: true,
   },
 });

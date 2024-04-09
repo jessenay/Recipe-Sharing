@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import RecipeCard from "../components/RecipeCard";
 import { search } from "../utils/API";
+import { useMutation } from "@apollo/client";
+import { ADD_RECIPE } from "../utils/mutations";
 
 const RandomRecipe = () => {
   // create state for holding returned google api data
   const [randomRecipe, setRandomRecipe] = useState();
+  const [addRecipe, { data }] = useMutation(ADD_RECIPE);
 
   useEffect(() => {
     search()
@@ -35,9 +38,32 @@ const RandomRecipe = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleSaveRecipe = async () => {
+    try {
+      console.log(randomRecipe);
+      const { data } = await addRecipe({
+        variables: randomRecipe,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   if (randomRecipe) {
     console.log(randomRecipe);
-    return <RecipeCard recipe={randomRecipe} />;
+    return (
+      <RecipeCard recipe={randomRecipe}>
+        {!data ? (
+          <button className="button" type="submit" onClick={handleSaveRecipe}>
+            Save Recipe
+          </button>
+        ) : (
+          <button className="button" disabled>
+            Saved!
+          </button>
+        )}
+      </RecipeCard>
+    );
   } else {
     return <div>Loading ...</div>;
   }

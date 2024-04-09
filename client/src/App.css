@@ -189,7 +189,11 @@
   font-family: "Playfair Display";
   border-bottom: solid black 2px;
   padding: 60px;
+}
 
+.nav-buttons {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */

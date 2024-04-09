@@ -1,6 +1,7 @@
 const { Profile, Recipe } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
-
+const { GraphQLError } = require('graphql');
+ 
 
 const resolvers = {
   Query: {
@@ -52,7 +53,7 @@ const resolvers = {
       try {
         // Create the new recipe with the profile reference
         const newRecipe = await Recipe.create(recipeData);
-    
+
         // Optionally, push the new recipe's ID to the user's profile
         // This step might not be necessary if you decide to query recipes directly 
         // without relying on the user's recipe array
@@ -68,7 +69,7 @@ const resolvers = {
         return Recipe.findById(newRecipe._id).populate('profile');
       } catch (error) {
         console.error("Error adding new recipe:", error);
-        throw new Error("Failed to add new recipe.");
+        throw new GraphQLError("Failed to add new recipe.", { extensions: { code:'BAD_USER_INPUT' } });
       }
     },
     

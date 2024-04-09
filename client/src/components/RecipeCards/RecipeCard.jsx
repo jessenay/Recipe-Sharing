@@ -134,7 +134,8 @@ const RecipeForm = ({ onAdd}) => {
                     required
                 />
             ))}
-            <button className="button" type="button" onClick={handleAddInstruction}>Add Instruction</button>
+
+            <button className="button" type="button" onClick={handleAddInstruction}>Add Instructions</button>
             <button className="button" type="submit">Add Recipe</button>
         </form>
         </div>

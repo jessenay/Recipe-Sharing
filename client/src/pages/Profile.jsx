@@ -35,7 +35,7 @@ const Profile = () => {
 
   return (
     <div>
-      <h1 className='profile-name'>{userData.username}'s Recipes</h1>
+      <h1 className="profile-name">{userData.username}'s Recipes</h1>
       {userData.recipes.map((recipe) => (
         <div className="single-recipe-card" key={recipe._id}>
           <div className="single-card-header">{recipe.title}</div>
@@ -49,8 +49,9 @@ const Profile = () => {
             </button>
             {recipeVisibility[recipe._id] && (
               <div>
-                <p>Prep Time: {recipe.prepTime}</p>
-                <p>Cook Time: {recipe.cookTime}</p>
+                {recipe.image && <img src={recipe.image} alt={recipe.title} />}
+                {recipe.prepTime && <p>Prep Time: {recipe.prepTime}</p>}
+                {recipe.cookTime && <p>Cook Time: {recipe.cookTime}</p>}
                 <h6 className="subtitle">Ingredients:</h6>
                 <ul className="list-unstyled">
                   {recipe.ingredients.map((ingredient, index) => (
