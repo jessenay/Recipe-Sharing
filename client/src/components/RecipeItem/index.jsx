@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./RecipeItem.css";
 import { useMutation } from "@apollo/client";
 import { REMOVE_RECIPE } from "../../utils/mutations";
+import { Button } from "react-bootstrap";
 
 export default function RecipeItem(props) {
   const [recipeVisibility, setRecipeVisibility] = useState(false);
@@ -22,20 +23,9 @@ export default function RecipeItem(props) {
     <div className="single-recipe-card">
       <div> Author: {props.author} </div>
       <div className="single-card-header">{props.title}</div>
-      <button
-          className="btn-delete"
-          onClick={() => removeRecipe()}
-          disabled={loading}
-          style={{ marginLeft: "10px" }}
-        >
-          Delete
-        </button>
       <div className="single-card-body">
         <p className="content">{props.description}</p>
-        <button
-          className="btn-view-details"
-          onClick={toggleRecipeVisibility}
-        >
+        <button className="btn-view-details" onClick={toggleRecipeVisibility}>
           {recipeVisibility ? "Hide Details" : "View Details"}
         </button>
         {recipeVisibility && (
@@ -63,6 +53,19 @@ export default function RecipeItem(props) {
           </div>
         )}
       </div>
+      <Button
+        className="btn-danger btn-view-details"
+        onClick={() => removeRecipe()}
+        disabled={loading}
+        style={{
+          marginLeft: "10px",
+          margin: "20px auto",
+          display: "block",
+          fontFamily: "Roboto",
+        }}
+      >
+        Delete
+      </Button>
     </div>
   );
 }
