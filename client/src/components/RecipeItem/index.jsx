@@ -42,19 +42,6 @@ export default function RecipeItem(props) {
           </div>
         )}
       </div>
-      <Button
-        className="btn-danger btn-view-details"
-        onClick={() => removeRecipe()}
-        disabled={loading}
-        style={{
-          marginLeft: "10px",
-          margin: "20px auto",
-          display: "block",
-          fontFamily: "Roboto",
-        }}
-      >
-        Delete
-      </Button>
     </div>
   );
 }
