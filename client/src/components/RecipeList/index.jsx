@@ -15,9 +15,6 @@ export default function RecipeList() {
     }
   }, [data?.recipes]);
 
-  const handleRecipeDeleted = (deletedRecipeId) => {
-    setRecipes(prevRecipes => prevRecipes.filter(recipe => recipe._id !== deletedRecipeId));
-  };
 
   if (loading) return <p>Loading...</p>;
 
@@ -35,7 +32,6 @@ export default function RecipeList() {
           ingredients={recipe.ingredients}
           prepTime={recipe.prepTime}
           cookTime={recipe.cookTime}
-          onRecipeDeleted={handleRecipeDeleted}
         />
       ))}
     </div>

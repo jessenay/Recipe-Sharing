@@ -1,20 +1,9 @@
 import { useState } from "react";
 import "./RecipeItem.css";
 import { useMutation } from "@apollo/client";
-import { REMOVE_RECIPE } from "../../utils/mutations";
-import { Button } from "react-bootstrap";
 
 export default function RecipeItem(props) {
   const [recipeVisibility, setRecipeVisibility] = useState(false);
-  const [removeRecipe, { loading, error }] = useMutation(REMOVE_RECIPE, {
-    variables: { recipeId: props._id },
-    onCompleted: () => {
-      props.onRecipeDeleted(props._id);
-    },
-    onError: (err) => {
-      console.error("Error deleting recipe:", err);
-    },
-  });
   const toggleRecipeVisibility = () => {
     setRecipeVisibility(!recipeVisibility);
   };
