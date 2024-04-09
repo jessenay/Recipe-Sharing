@@ -1,33 +1,32 @@
-import RecipeItem from "..//RecipeItem";
+import RecipeItem from "../RecipeItem";
 import { FETCH_RECIPES_QUERY } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import './RecipeList.css';
-import React, { useMemo } from "react";
-
+import React, { useState, useEffect } from "react";
 
 export default function RecipeList() {
   const { loading, data } = useQuery(FETCH_RECIPES_QUERY);
+  const [recipes, setRecipes] = useState([]);
 
+  useEffect(() => {
+    if (data?.recipes) {
+      const sortedRecipes = [...data.recipes].sort((a, b) => b._id.localeCompare(a._id));
+      setRecipes(sortedRecipes);
+    }
+  }, [data?.recipes]);
 
-  // Using useMemo to sort the recipes based on _id in descending order.
-  const recipes = useMemo(() => {
-    const unsortedRecipes = data?.recipes || [];
-    // Ensure you're sorting by `_id` if that's the correct property name
-    const sortedRecipes = [...unsortedRecipes].sort((a, b) => {
-      if (b._id && a._id) { // Additional check to ensure _id exists on both objects
-        return b._id.localeCompare(a._id);
-      }
-      return 0; // Return a default value if one of the IDs is missing
-    });
-    return sortedRecipes;
-  }, [data]);
+  const handleRecipeDeleted = (deletedRecipeId) => {
+    setRecipes(prevRecipes => prevRecipes.filter(recipe => recipe._id !== deletedRecipeId));
+  };
 
   if (loading) return <p>Loading...</p>;
 
   return (
     <div className="container pt-4">
       {recipes.map((recipe) => (
-        <RecipeItem key={recipe.id}
+        <RecipeItem
+          key={recipe._id}
+          _id={recipe._id}
           author={recipe.profile.username}
           title={recipe.title}
           description={recipe.description}
@@ -36,6 +35,7 @@ export default function RecipeList() {
           ingredients={recipe.ingredients}
           prepTime={recipe.prepTime}
           cookTime={recipe.cookTime}
+          onRecipeDeleted={handleRecipeDeleted}
         />
       ))}
     </div>

@@ -39,7 +39,7 @@ type Mutation {
   login(email: String!, password: String!): AuthPayload
   addRecipe(title: String!, description: String, image: String, prepTime: String, cookTime: String, ingredients: [String!]!, instructions: [String!]!): Profile
   #removeAccount(profileId: ID!): Profile
-  removeRecipe(profileId: ID!, recipeId: ID!): Profile
+  removeRecipe(recipeId: ID!): Recipe
 }
 `;
 
