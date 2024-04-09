@@ -2,7 +2,7 @@
 /* card form */
 
 .recipes{
-    color:black;
+    color:rgb(0, 0, 0);
     padding: 8px;
     font-size: 40px;
     font-family: "Playfair Display";
@@ -16,7 +16,7 @@
     align-items: center;
     height: auto;
     border-radius: 8px;
-    background-image: url('https://img.freepik.com/free-photo/top-view-sketchbook-cottage-cheese-with-fresh-ripe-yellow-red-cherries-arranged-around-grey_141793-12013.jpg');
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('https://img.freepik.com/free-photo/top-view-sketchbook-cottage-cheese-with-fresh-ripe-yellow-red-cherries-arranged-around-grey_141793-12013.jpg');
     background-position: center;
     background-size: cover;
     background-color:rgb(33 32 136 / 40%);
@@ -33,11 +33,11 @@
   }
 
 .label{
-    color:black;
+    color:rgb(255, 255, 255);
     padding: 8px;
-    font-size: 20px;
+    font-size: 25px;
     font-family: "Playfair Display";
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: underline;
     text-align: center;
 
@@ -50,11 +50,13 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: rgb(255, 251, 240);
+    background-color: rgb(249, 225, 207);
   }
 
   .button{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: "Poppins";
+    font-weight: 250;
   }
 
   .button:hover {
