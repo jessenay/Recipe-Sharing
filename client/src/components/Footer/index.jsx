@@ -3,6 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
     <footer
       className="w-100 mt-auto text-dark p-4 align-center"
@@ -14,6 +21,9 @@ const Footer = () => {
             &larr; Go Back
           </button>
         )}
+        <button className="btn btn-dark mb-3" onClick={scrollToTop}>
+          &#8679; Back to Top
+        </button>
         <h4
           style={{
             fontSize: "20px",
