@@ -1,8 +1,19 @@
 import { useState } from "react";
 import "./RecipeItem.css";
+import { useMutation } from "@apollo/client";
+import { REMOVE_RECIPE } from "../../utils/mutations";
 
 export default function RecipeItem(props) {
   const [recipeVisibility, setRecipeVisibility] = useState(false);
+  const [removeRecipe, { loading, error }] = useMutation(REMOVE_RECIPE, {
+    variables: { recipeId: props._id },
+    onCompleted: () => {
+      props.onRecipeDeleted(props._id);
+    },
+    onError: (err) => {
+      console.error("Error deleting recipe:", err);
+    },
+  });
   const toggleRecipeVisibility = () => {
     setRecipeVisibility(!recipeVisibility);
   };
@@ -11,6 +22,14 @@ export default function RecipeItem(props) {
     <div className="single-recipe-card">
       <div> Author: {props.author} </div>
       <div className="single-card-header">{props.title}</div>
+      <button
+          className="btn-delete"
+          onClick={() => removeRecipe()}
+          disabled={loading}
+          style={{ marginLeft: "10px" }}
+        >
+          Delete
+        </button>
       <div className="single-card-body">
         <p className="content">{props.description}</p>
         <button

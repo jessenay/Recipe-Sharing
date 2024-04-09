@@ -78,13 +78,31 @@ const resolvers = {
     //     return await Profile.findByIdAndDelete(profileId);
     // },
     // Remove a recipe from a user's profile
-    removeRecipe: async (_, { profileId, recipe }) => {
-      return await Profile.findByIdAndUpdate(
-        profileId,
-        { $pull: { recipes: recipe } },
-        { new: true }
+    removeRecipe: async (_, { recipeId }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You must be logged in to perform this action.');
+      }
+  
+      const recipe = await Recipe.findById(recipeId);
+      if (!recipe) {
+        throw new Error('Recipe not found');
+      }
+  
+      if (recipe.profile.toString() !== context.user._id) {
+        throw new AuthenticationError('You do not have permission to delete this recipe.');
+      }
+  
+      // Delete the recipe
+      await Recipe.findByIdAndDelete(recipeId);
+  
+      await Profile.findByIdAndUpdate(
+        context.user._id,
+        { $pull: { recipes: recipeId } }
       );
+  
+      return recipe;
     },
+  
     login: async (_, { email, password }) => {
       // Find the user by email
       const user = await Profile.findOne({ email });
