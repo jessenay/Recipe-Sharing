@@ -3,11 +3,14 @@ import RecipeCard from "../components/RecipeCard";
 import { search } from "../utils/API";
 import { useMutation } from "@apollo/client";
 import { ADD_RECIPE } from "../utils/mutations";
+import { useNavigate } from "react-router-dom";
+import { FETCH_RECIPES_QUERY, QUERY_SINGLE_PROFILE } from "../utils/queries";
 
 const RandomRecipe = () => {
   // create state for holding returned google api data
   const [randomRecipe, setRandomRecipe] = useState();
   const [addRecipe, { data }] = useMutation(ADD_RECIPE);
+  const navigate = useNavigate();
 
   useEffect(() => {
     search()
@@ -43,6 +46,10 @@ const RandomRecipe = () => {
       console.log(randomRecipe);
       const { data } = await addRecipe({
         variables: randomRecipe,
+        refetchQueries: [
+          { query: FETCH_RECIPES_QUERY },
+          { query: QUERY_SINGLE_PROFILE },
+        ],
       });
     } catch (err) {
       console.error(err);
